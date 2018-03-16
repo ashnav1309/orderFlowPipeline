@@ -33,7 +33,7 @@ public class OrderProducer {
 
 		try {
 			for (long index = time; index < time + sendMessageCount; index++) {
-				final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(TOPIC, index, "Hello Mom " + index);
+				final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(TOPIC, index, "181001123");
 	
 				RecordMetadata metadata = producer.send(record).get();
 	
@@ -44,8 +44,14 @@ public class OrderProducer {
 						metadata.offset(), elapsedTime);
 
 			}
+		}
+		catch(Exception e) {
 			
-		} finally {
+			e.printStackTrace();
+			
+		}
+			
+		 finally {
 			producer.flush();
 			producer.close();
 		}
