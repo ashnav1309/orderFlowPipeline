@@ -16,7 +16,8 @@ public class OrderConsumer {
     private final static String BOOTSTRAP_SERVERS = "localhost:9092,localhost:9093,localhost:9094";
    
     private static Consumer<Long, String> createConsumer() {
-        final Properties props = new Properties();
+        
+    	final Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                                     BOOTSTRAP_SERVERS);
         props.put(ConsumerConfig.GROUP_ID_CONFIG,
