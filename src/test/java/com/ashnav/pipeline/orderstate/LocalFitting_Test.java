@@ -3,19 +3,57 @@ package com.ashnav.pipeline.orderstate;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import com.jcraft.jsch.JSchException;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import macros.ConstantLiterals;
+import utilities.ConnectToCSV;
 import utilities.ConnectToGSheet;
 import utilities.ConnectToMysql;
 import utilities.ConnectToServer;
 
-public class AppTest {
+public class LocalFitting_Test {
 
-	public static void executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort) throws IOException {
-		
+	private static final Logger logger = LogManager.getLogger(LocalFitting_Test.class.getName());
+	
+	public static String getDataUsingGSheet(String spreadsheetId, String range) throws IOException {
+		List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Row);
+		StringBuilder data = new StringBuilder();
+		Iterator<List<Object>> iterator = values.iterator();
+		while(iterator.hasNext()) { 
+			String value = iterator.next().get(0).toString();
+			data.append(value);
+			data.append(", ");
+		}
+		int lastcomma = data.lastIndexOf(",");
+		data.deleteCharAt(lastcomma);
+		logger.info("getDataUsingGSheet method");
+		return data.toString();
+	}
+
+	public static String getDataUsingCSV(String fileName, String columnName) {
+		List<String> values = ConnectToCSV.removeDuplicateRows(ConnectToCSV.readCSV(fileName, columnName));
+		StringBuilder data = new StringBuilder();
+		Iterator<String> iterator = values.iterator();
+		while(iterator.hasNext()) { 
+			String value = iterator.next();
+			data.append(value);
+			data.append(", ");
+		}
+		int lastcomma = data.lastIndexOf(",");
+		data.deleteCharAt(lastcomma);
+		return data.toString();
+	}
+
+	public static void main(String args[]) throws IOException, SQLException {
+
+		final String range 			= "ServersList!B:G";
+		final String spreadsheetId 	= "1ppbqQhNDplcH906K3oLFeLYd2d1jfQizfdr02DqpgeQ";
+		final  int 	 RPort 			= 3306;
+		final  int 	 SSHPort 		= 22;
+		String MYSQLHost 			= "127.0.0.1";
 		List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Column);
 		List<ConnectToServer> sshConnections = new ArrayList<>();
 		List<ConnectToMysql> mysqlConnections = new ArrayList<>();
@@ -31,17 +69,17 @@ public class AppTest {
 				String SSHPassword 		= value.get(6).toString();
 				String fileName			= value.get(8).toString();
 				int LPort				= Integer.parseInt(value.get(7).toString());
-				sshConnections.add(new ConnectToServer(environment, SSHUser, SSHHost, SSHPassword, SSHPort, LPort, RHost, MYSQLPort));
+				sshConnections.add(new ConnectToServer(environment, SSHUser, SSHHost, SSHPassword, SSHPort, LPort, RHost, RPort));
 				mysqlConnections.add(new ConnectToMysql(MYSQLHost, MYSQLUser, MYSQLPassword, LPort, fileName));
 			}
 		}
-
+		
 		for(ConnectToServer sshConnection : sshConnections) {
 			for(ConnectToMysql mysqlConnection : mysqlConnections) {
 				if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
 					if(sshConnection.createSSHSession()) {
 						mysqlConnection.createMYSQLConnection();
-						mysqlConnection.executeSqlScript();
+						mysqlConnection.executeSqlScript("", "Field", "Type");
 						System.out.printf("========================================================================\n");
 						mysqlConnection.destroyMySqlConnection();
 						sshConnection.destroyLPort();
@@ -53,17 +91,6 @@ public class AppTest {
 				}
 			}		
 		} 
-	}
-	
-	public static void main(String args[]) throws IOException, JSchException, SQLException {
-
-		final String range 			= "ServersList!B:G";
-		final String spreadsheetId 	= "1ppbqQhNDplcH906K3oLFeLYd2d1jfQizfdr02DqpgeQ";
-		final  int 	 RPort 			= 3306;
-		final  int 	 SSHPort 		= 22;
-		String MYSQLHost 			= "127.0.0.1";
-
-		AppTest.executeOnAllEvironments(spreadsheetId, range, MYSQLHost, RPort, SSHPort);
 	}
 }
 

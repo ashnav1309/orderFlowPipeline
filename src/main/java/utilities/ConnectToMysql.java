@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -75,35 +76,103 @@ public class ConnectToMysql {
 		}
 		Statement currentStatement = null;
 		while(scanner.hasNext()) {
-			String rawStatement = scanner.next() + delimiter;
-			if(!rawStatement.contains("\n;")) {
-				try {
-					System.out.println("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
-					System.out.println(rawStatement);
-					System.out.println("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
-					currentStatement = connection.createStatement();
-					currentStatement.execute(rawStatement);
-					System.out.printf("%d row(s) fetched\n",currentStatement.getResultSet().getFetchSize());
-					System.out.printf("%d row(s) updated\n",currentStatement.getUpdateCount());
-				} 
-				catch (SQLException e) {
-					e.printStackTrace();
-				} 
-				finally {
-					if (currentStatement != null) {
-						try {
-							currentStatement.close();
-						} 
-						catch (SQLException e) {
-							e.printStackTrace();
-						}
+			String rawStatement = scanner.next();
+			rawStatement = rawStatement.replaceAll("\n", " ");
+			rawStatement = rawStatement.replaceAll("( )+", " ");
+			rawStatement = rawStatement.trim();
+			rawStatement = rawStatement + delimiter;
+			try {
+				System.out.println("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
+				System.out.println(rawStatement);
+				System.out.println("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
+				currentStatement = connection.createStatement();
+				currentStatement.execute(rawStatement);
+				System.out.printf("%d row(s) updated\n",currentStatement.getUpdateCount());
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			} 
+			finally {
+				if (currentStatement != null) {
+					try {
+						currentStatement.close();
+					} 
+					catch (SQLException e) {
+						e.printStackTrace();
 					}
-					currentStatement = null;
 				}
+				currentStatement = null;
 			}
 		}
 		scanner.close();
 	}
+
+	@SuppressWarnings("resource")
+	public void executeSqlScript(String value, String... columnNames) {
+		String filePath = "src/main/resources/"+fileName;
+		ResultSet rs = null;
+		File file = new File(filePath);
+		String delimiter = ";";
+		Scanner scanner = null;
+		try {
+			scanner = new Scanner(file).useDelimiter(delimiter);
+		} 
+		catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		Statement currentStatement = null;
+		while(scanner.hasNext()) {
+			String rawStatement = scanner.next();
+			rawStatement = rawStatement.replaceAll("\n", " ");
+			rawStatement = rawStatement.replaceAll("( )+", " ");
+			rawStatement = rawStatement.trim();
+			rawStatement = rawStatement + delimiter;
+			rawStatement = rawStatement.replaceAll("####", value);
+			try {
+				System.out.println("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
+				System.out.println(rawStatement);
+				System.out.println("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
+				currentStatement = connection.createStatement();
+				rs = currentStatement.executeQuery(rawStatement);
+				int count = 0;
+				while(rs.next()) {
+					count++;
+					StringBuilder data = new StringBuilder();
+					for(String columnName : columnNames) {
+						data.append(rs.getString(columnName));
+						data.append(", ");
+					}
+					data.deleteCharAt(data.lastIndexOf(", "));
+					String row = data.toString().trim();
+					System.out.println(row);
+				}
+				System.out.printf("========================================================================\n");
+				System.out.printf("%d row(s) returned\n",count);
+					
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+				return;
+			} 
+			catch (ArrayIndexOutOfBoundsException e) {
+				e.printStackTrace();
+				return;
+			}
+			finally {
+				if (currentStatement != null) {
+					try {
+						currentStatement.close();
+					} 
+					catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				currentStatement = null;
+			}
+		}
+		scanner.close();
+	}
+
 
 	//	public static Boolean getWatchDogOn(int pollAfter, int timeOutAfter) {
 	//

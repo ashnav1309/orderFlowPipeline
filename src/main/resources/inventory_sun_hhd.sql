@@ -1,0 +1,15 @@
+UPDATE inventory.system_preference SET system_preference.key = 'EYEFRAME, SUNGLASS' WHERE system_preference.group = 'picking_location';
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS', '11357', 'picking_classification', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS', 'FR0-SUN,FRANCHISEBULK,PL', 'picking_categories', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('FR0-SUN', 'CUSTOM,B2B,CUSTOMSTORE,JOHNJACOBSONLINE,CUSTSTORE,JJONLINE,JOHNJACOBS,EXCHANGE,OFFLINESMS', 'picking_channel', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('FR2', 'CUSTOM,B2B,CUSTOMSTORE,JOHNJACOBSONLINE,CUSTSTORE,JJONLINE,JOHNJACOBS,EXCHANGE,OFFLINESMS', 'picking_channel', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS_FR0-SUN_01', '50', 'picking_items', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS_FR0-SUN_LKH03', '50', 'picking_items', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS_FR2_01', '50', 'picking_items', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS_FR2_LKH03', '50', 'picking_items', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS_FRANCHISEBULK_01', '50', 'picking_items', 'LIST');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('SUNGLASS_FRANCHISEBULK_LKH03', '50', 'picking_items', 'LIST');
+UPDATE inventory.system_preference SET value = '11355,17775,11354,19153,19429,11357' WHERE id = 5;
+UPDATE inventory.system_preference SET value = '11354,19153,19429' WHERE id = 14;
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('TIME_LAG_EYEFRAME', '0', 'picking_system', 'Integer');
+INSERT INTO inventory.system_preference (`key`, `value`, `group`, `type`) VALUES ('TIME_LAG_SUNGLASS', '0', 'picking_system', 'Integer');

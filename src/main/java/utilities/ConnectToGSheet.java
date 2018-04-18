@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -19,8 +22,6 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
-
-import macros.ConstantLiterals;
 
 public final class ConnectToGSheet {
 
@@ -82,10 +83,10 @@ public final class ConnectToGSheet {
 	 * @return a list of list of objects
 	 * @throws IOException
 	 */
-	public static List<List<Object>> getCellValues(String spreadsheetId, String range) throws IOException {
+	public static List<List<Object>> getCellValues(String spreadsheetId, String range, String majorDimensions) throws IOException {
 
 		Sheets service = getSheetsService();
-		ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).setMajorDimension(ConstantLiterals.MajorDimension_Column).execute();
+		ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).setMajorDimension(majorDimensions).execute();
 		List<List<Object>> listListObject = response.getValues();
 
 		if (listListObject == null || listListObject.size() == 0) {
@@ -96,6 +97,13 @@ public final class ConnectToGSheet {
 			System.out.printf("\n");
 			return listListObject;
 		}
-
 	}
+	
+	public static List<String> removeDuplicateRows(List<String> list) {
+		Set<String> dataSet = new HashSet<>(list);
+		System.out.printf("%d total record(s)\n", list.size());
+		System.out.printf("%d unique record(s)\n", dataSet.size());
+		return dataSet.stream().collect(Collectors.toList());
+	}
+	
 }
