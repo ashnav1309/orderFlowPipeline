@@ -1,21 +1,18 @@
 package com.ashnav.pipeline.orderstate;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.jcraft.jsch.JSchException;
 
 import macros.ConstantLiterals;
 import utilities.ConnectToGSheet;
 import utilities.ConnectToMysql;
 import utilities.ConnectToServer;
 
-public class AppTest {
+public class ExecuteQuery {
 
-	public static void executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort) throws IOException {
-		
+	public static void executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort)  {
+
 		List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Column);
 		List<ConnectToServer> sshConnections = new ArrayList<>();
 		List<ConnectToMysql> mysqlConnections = new ArrayList<>();
@@ -54,8 +51,8 @@ public class AppTest {
 			}		
 		} 
 	}
-	
-	public static void main(String args[]) throws IOException, JSchException, SQLException {
+
+	public static void main(String args[]) throws IOException {
 
 		final String range 			= "ServersList!B:G";
 		final String spreadsheetId 	= "1ppbqQhNDplcH906K3oLFeLYd2d1jfQizfdr02DqpgeQ";
@@ -63,7 +60,7 @@ public class AppTest {
 		final  int 	 SSHPort 		= 22;
 		String MYSQLHost 			= "127.0.0.1";
 
-		AppTest.executeOnAllEvironments(spreadsheetId, range, MYSQLHost, RPort, SSHPort);
+		ExecuteQuery.executeOnAllEvironments(spreadsheetId, range, MYSQLHost, RPort, SSHPort);
 	}
 }
 

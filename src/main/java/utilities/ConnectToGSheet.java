@@ -24,15 +24,13 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
 
 public final class ConnectToGSheet {
-
 	private static final String APPLICATION_NAME = "DataSheet_For_SCM_UI_Automation";
 	private static final java.io.File DATA_STORE_DIR = new java.io.File(System.getProperty("user.home"), ".credentials/sheets.googleapis.com-orderState");
 	private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 	private static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS_READONLY);
-
 	private static FileDataStoreFactory DATA_STORE_FACTORY;
 	private static HttpTransport HTTP_TRANSPORT;
-
+	
 	static {
 		try {
 			HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -50,7 +48,6 @@ public final class ConnectToGSheet {
 	 * @throws IOException
 	 */
 	private static Credential authorize() throws IOException {
-
 		InputStream in = ConnectToGSheet.class.getResourceAsStream("/client_secret.json");
 		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
@@ -61,7 +58,6 @@ public final class ConnectToGSheet {
 
 		Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 		return credential;
-
 	}
 
 	/**
@@ -69,13 +65,18 @@ public final class ConnectToGSheet {
 	 * @return an authorized Sheets API client service
 	 * @throws IOException
 	 */
-	private static Sheets getSheetsService() throws IOException {
-
-		Credential credential = authorize();
+	private static Sheets getSheetsService() {
+		Credential credential;
+		try {
+			credential = authorize();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 		return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
 				.setApplicationName(APPLICATION_NAME)
 				.build();
-
 	}
 
 	/**
@@ -83,27 +84,36 @@ public final class ConnectToGSheet {
 	 * @return a list of list of objects
 	 * @throws IOException
 	 */
-	public static List<List<Object>> getCellValues(String spreadsheetId, String range, String majorDimensions) throws IOException {
-
+	public static List<List<Object>> getCellValues(String spreadsheetId, String range, String majorDimensions) {
 		Sheets service = getSheetsService();
-		ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).setMajorDimension(majorDimensions).execute();
-		List<List<Object>> listListObject = response.getValues();
+		try {
+			if(service != null) {
+				ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).setMajorDimension(majorDimensions).execute();
+				List<List<Object>> listListObject = response.getValues();
 
-		if (listListObject == null || listListObject.size() == 0) {
+				if (listListObject == null || listListObject.size() == 0) {
+					return null;
+				} 
+				else {
+					System.out.println(response.toPrettyString());
+					System.out.printf("\n");
+					return listListObject;
+				}
+			}
+			else {
+				return null;
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
 			return null;
-		} 
-		else {
-			System.out.println(response.toPrettyString());
-			System.out.printf("\n");
-			return listListObject;
 		}
 	}
-	
-	public static List<String> removeDuplicateRows(List<String> list) {
+
+	public static List<Object> removeDuplicateRows(List<String> list) {
 		Set<String> dataSet = new HashSet<>(list);
 		System.out.printf("%d total record(s)\n", list.size());
 		System.out.printf("%d unique record(s)\n", dataSet.size());
 		return dataSet.stream().collect(Collectors.toList());
 	}
-	
 }

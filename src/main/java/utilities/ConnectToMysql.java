@@ -42,23 +42,40 @@ public class ConnectToMysql {
 		try {
 			connection = DriverManager.getConnection(url, properties);
 			System.out.printf("========================================================================\n");
-			System.out.printf("JDBC Connection to Database host %s established? "+ !connection.isClosed()+"\n", url);
+			System.out.printf("JDBC Connection to %s established? "+ !connection.isClosed()+"\n", url);
 			System.out.printf("========================================================================\n\n");
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
+			return;
 		}
+	}
+
+	public Boolean isConnected() {
+		Boolean connected = false;
+		try {
+			if(!connection.isClosed()) {
+				connected = true;
+			}
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return connected;
 	}
 
 	public void destroyMySqlConnection() {
 		if(connection != null) {
 			try {
 				connection.close();
-				System.out.println("Database Connection destroyed");
-			} catch (SQLException e) {
+			} 
+			catch (SQLException e) {
 				e.printStackTrace();
+				return;
 			}
 		}
+		System.out.println("JDBC Connection destroyed");
 	}
 
 	@SuppressWarnings("resource") //resources are closed safely in finally block
@@ -69,6 +86,7 @@ public class ConnectToMysql {
 		Scanner scanner;
 		try {
 			scanner = new Scanner(file).useDelimiter(delimiter);
+			System.out.printf("\nExecuting scripts from %s\n\n",fileName);
 		} 
 		catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -92,6 +110,9 @@ public class ConnectToMysql {
 			catch (SQLException e) {
 				e.printStackTrace();
 			} 
+			catch (NullPointerException e) {
+				e.printStackTrace();
+			}
 			finally {
 				if (currentStatement != null) {
 					try {
@@ -148,7 +169,7 @@ public class ConnectToMysql {
 				}
 				System.out.printf("========================================================================\n");
 				System.out.printf("%d row(s) returned\n",count);
-					
+
 			} 
 			catch (SQLException e) {
 				e.printStackTrace();
@@ -165,6 +186,7 @@ public class ConnectToMysql {
 					} 
 					catch (SQLException e) {
 						e.printStackTrace();
+						return;
 					}
 				}
 				currentStatement = null;
@@ -172,7 +194,6 @@ public class ConnectToMysql {
 		}
 		scanner.close();
 	}
-
 
 	//	public static Boolean getWatchDogOn(int pollAfter, int timeOutAfter) {
 	//

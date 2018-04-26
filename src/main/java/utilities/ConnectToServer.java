@@ -14,7 +14,6 @@ public class ConnectToServer {
 	private String SSHUser, SSHHost, SSHPassword, environment;
 
 	public ConnectToServer(String environment, String SSHUser, String SSHHost, String SSHPassword, int SSHPort, int LPort, String RHost, int RPort) {
-
 		this.environment = environment;
 		this.SSHUser = SSHUser;
 		this.SSHHost = SSHHost;
@@ -23,7 +22,6 @@ public class ConnectToServer {
 		this.RHost = RHost;
 		this.LPort = LPort;
 		this.RPort = RPort;
-
 	}
 
 	public Boolean createSSHSession() {
@@ -34,19 +32,19 @@ public class ConnectToServer {
 			session.setConfig("StrictHostKeyChecking", "No");
 			session.setPassword(SSHPassword);
 			session.connect(60000);
-			System.out.printf("==================================%s======================================\n",environment);
+			System.out.printf("===============================%s===================================\n",environment);
 			System.out.printf("ssh %s@%s:%d \n",SSHUser,SSHHost, SSHPort);
 			sshConnection = isSessionConnected();
 			lPortRhostRPort();
-			System.out.printf("==================================%s======================================\n\n",environment);
+			System.out.printf("===============================%s===================================\n",environment);
 			return sshConnection;
 		} 
 		catch (JSchException e) {
 			e.printStackTrace();
-			System.out.printf("==================================%s======================================\n\n",environment);
+			System.out.printf("==================================%s======================================\n",environment);
 			System.out.printf("ssh %s@%s:%d \n",SSHUser,SSHHost, SSHPort);
 			System.out.println("ssh established? "+sshConnection);
-			System.out.printf("==================================%s======================================\n\n",environment);
+			System.out.printf("==================================%s======================================\n",environment);
 			return sshConnection;
 		}
 	}
@@ -62,7 +60,6 @@ public class ConnectToServer {
 	}
 
 	private Boolean isSessionConnected() {
-
 		Boolean isSessionConnected = false;
 		if(session != null) {
 			isSessionConnected = session.isConnected();
@@ -72,21 +69,21 @@ public class ConnectToServer {
 	}
 
 	private void lPortRhostRPort() {
-
 		if(session !=null) {
 			try {
 				session.setPortForwardingL(LPort, RHost, RPort);
 				for(String value : session.getPortForwardingL()) {
 					System.out.println(value);
 				}
-			} catch (JSchException e) {
+			} 
+			catch (JSchException e) {
 				e.printStackTrace();
+				return;
 			}
 		}
 	}
 
 	public void destroySSHSession() {
-
 		if(session != null) {
 			session.disconnect();
 			System.out.println("SSH Connection destroyed");
@@ -94,13 +91,14 @@ public class ConnectToServer {
 	}
 
 	public void destroyLPort() {
-
 		if(session != null) {
 			try {
 				session.delPortForwardingL(LPort);
 				System.out.println("LPort destroyed");
-			} catch (JSchException e) {
+			} 
+			catch (JSchException e) {
 				e.printStackTrace();
+				return;
 			}
 		}
 	}

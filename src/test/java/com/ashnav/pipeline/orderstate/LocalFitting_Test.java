@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import macros.ConstantLiterals;
 import utilities.ConnectToCSV;
 import utilities.ConnectToGSheet;
@@ -16,10 +17,10 @@ import utilities.ConnectToServer;
 
 public class LocalFitting_Test {
 
-	private static final Logger logger = LogManager.getLogger(LocalFitting_Test.class.getName());
+	private static Logger logger = LogManager.getLogger(LocalFitting_Test.class);
 	
 	public static String getDataUsingGSheet(String spreadsheetId, String range) throws IOException {
-		List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Row);
+			List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Row);
 		StringBuilder data = new StringBuilder();
 		Iterator<List<Object>> iterator = values.iterator();
 		while(iterator.hasNext()) { 
@@ -34,11 +35,11 @@ public class LocalFitting_Test {
 	}
 
 	public static String getDataUsingCSV(String fileName, String columnName) {
-		List<String> values = ConnectToCSV.removeDuplicateRows(ConnectToCSV.readCSV(fileName, columnName));
+		List<Object> values = ConnectToCSV.removeDuplicateRows(ConnectToCSV.readCSV(fileName, columnName));
 		StringBuilder data = new StringBuilder();
-		Iterator<String> iterator = values.iterator();
+		Iterator<Object> iterator = values.iterator();
 		while(iterator.hasNext()) { 
-			String value = iterator.next();
+			String value = iterator.next().toString();
 			data.append(value);
 			data.append(", ");
 		}
@@ -48,7 +49,7 @@ public class LocalFitting_Test {
 	}
 
 	public static void main(String args[]) throws IOException, SQLException {
-
+		logger.info("Hello3");
 		final String range 			= "ServersList!B:G";
 		final String spreadsheetId 	= "1ppbqQhNDplcH906K3oLFeLYd2d1jfQizfdr02DqpgeQ";
 		final  int 	 RPort 			= 3306;
@@ -79,7 +80,7 @@ public class LocalFitting_Test {
 				if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
 					if(sshConnection.createSSHSession()) {
 						mysqlConnection.createMYSQLConnection();
-						mysqlConnection.executeSqlScript("", "Field", "Type");
+						// mysqlConnection.executeSqlScript("", "Field", "Type");
 						System.out.printf("========================================================================\n");
 						mysqlConnection.destroyMySqlConnection();
 						sshConnection.destroyLPort();

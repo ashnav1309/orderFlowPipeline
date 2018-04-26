@@ -41,7 +41,7 @@ public final class ConnectToCSV {
 		return rowsData;
 	}
 
-	public static List<String> removeDuplicateRows(List<String> list) {
+	public static List<Object> removeDuplicateRows(List<String> list) {
 		Set<String> dataSet = new HashSet<>(list);
 		System.out.printf("%d total record(s)\n", list.size());
 		System.out.printf("%d unique record(s)\n", dataSet.size());
