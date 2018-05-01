@@ -10,13 +10,21 @@ import java.sql.Statement;
 import java.util.Properties;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import macros.ConstantLiterals;
+
 public class ConnectToMysql {
+
+	private static Logger logger = LogManager.getLogger(ConnectToMysql.class.getName());
 
 	private Connection connection 	= null;
 	private String MYSQLHost 		= null;
 	private String MYSQLUser 		= null;
 	private String MYSQLPassword 	= null;
 	private String fileName 		= null;
+	String url 						= null;
 	private int LPort 				= 0;
 
 	public ConnectToMysql(String MYSQLHost, String MYSQLUser, String MYSQLPassword, int LPort, String fileName) {
@@ -32,8 +40,7 @@ public class ConnectToMysql {
 	}
 
 	public void createMYSQLConnection() {
-
-		String url = "jdbc:mysql://"+MYSQLHost+":"+LPort;
+		url 				  = "jdbc:mysql://"+MYSQLHost+":"+LPort;
 		Properties properties = new Properties();
 		properties.setProperty("user", MYSQLUser);
 		properties.setProperty("password", MYSQLPassword);
@@ -41,26 +48,25 @@ public class ConnectToMysql {
 		properties.setProperty("autoReconnect", "true");
 		try {
 			connection = DriverManager.getConnection(url, properties);
-			System.out.printf("========================================================================\n");
-			System.out.printf("JDBC Connection to %s established? "+ !connection.isClosed()+"\n", url);
-			System.out.printf("========================================================================\n\n");
+			logger.info("JDBC Connection to "+url+" established? "+ isConnected());
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
-			return;
+			logger.error(e);
 		}
 	}
 
 	public Boolean isConnected() {
 		Boolean connected = false;
-		try {
-			if(!connection.isClosed()) {
-				connected = true;
+		if(connection != null) {
+			try {
+				if(!connection.isClosed()) {
+					connected = true;
+				}
+			} 
+			catch (SQLException e) {
+				logger.error(e);
+				return false;
 			}
-		} 
-		catch (SQLException e) {
-			e.printStackTrace();
-			return false;
 		}
 		return connected;
 	}
@@ -69,27 +75,27 @@ public class ConnectToMysql {
 		if(connection != null) {
 			try {
 				connection.close();
+				logger.info("JDBC Connection to "+url+" destroyed? {}", !isConnected());
 			} 
 			catch (SQLException e) {
-				e.printStackTrace();
+				logger.error(e);
 				return;
 			}
 		}
-		System.out.println("JDBC Connection destroyed");
 	}
 
 	@SuppressWarnings("resource") //resources are closed safely in finally block
 	public void executeSqlScript() {
-		String filePath = "src/main/resources/"+fileName;
+		String filePath = ConstantLiterals.ResourcesPath+fileName;
 		File file = new File(filePath);
 		String delimiter = ";";
 		Scanner scanner;
 		try {
 			scanner = new Scanner(file).useDelimiter(delimiter);
-			System.out.printf("\nExecuting scripts from %s\n\n",fileName);
+			logger.info("Executing scripts from "+fileName);
 		} 
 		catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+			logger.error("Invalid file name or location. ", e1);
 			return;
 		}
 		Statement currentStatement = null;
@@ -99,19 +105,24 @@ public class ConnectToMysql {
 			rawStatement = rawStatement.replaceAll("( )+", " ");
 			rawStatement = rawStatement.trim();
 			rawStatement = rawStatement + delimiter;
+			logger.trace("++++++++++START-QUERY++++++++++");
+			if(rawStatement.isEmpty() || rawStatement.startsWith(";") || rawStatement.equals(" ")){
+				logger.trace("Empty Query");
+				logger.trace("++++++++++END-QUERY++++++++++++");
+				continue;
+			}
 			try {
-				System.out.println("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
-				System.out.println(rawStatement);
-				System.out.println("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
+				logger.trace(rawStatement);
+				logger.trace("++++++++++END-QUERY++++++++++++");
 				currentStatement = connection.createStatement();
 				currentStatement.execute(rawStatement);
-				System.out.printf("%d row(s) updated\n",currentStatement.getUpdateCount());
+				logger.info(currentStatement.getUpdateCount()+" row(s) updated");
 			} 
 			catch (SQLException e) {
-				e.printStackTrace();
+				logger.error(e);
 			} 
 			catch (NullPointerException e) {
-				e.printStackTrace();
+				logger.error(e);
 			}
 			finally {
 				if (currentStatement != null) {
@@ -119,7 +130,7 @@ public class ConnectToMysql {
 						currentStatement.close();
 					} 
 					catch (SQLException e) {
-						e.printStackTrace();
+						logger.error(e);
 					}
 				}
 				currentStatement = null;
@@ -150,9 +161,9 @@ public class ConnectToMysql {
 			rawStatement = rawStatement + delimiter;
 			rawStatement = rawStatement.replaceAll("####", value);
 			try {
-				System.out.println("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
-				System.out.println(rawStatement);
-				System.out.println("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
+				logger.info("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
+				logger.info(rawStatement);
+				logger.info("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
 				currentStatement = connection.createStatement();
 				rs = currentStatement.executeQuery(rawStatement);
 				int count = 0;
@@ -165,18 +176,17 @@ public class ConnectToMysql {
 					}
 					data.deleteCharAt(data.lastIndexOf(", "));
 					String row = data.toString().trim();
-					System.out.println(row);
+					logger.info(row);
 				}
-				System.out.printf("========================================================================\n");
-				System.out.printf("%d row(s) returned\n",count);
+				logger.info(count+" row(s) returned");
 
 			} 
 			catch (SQLException e) {
-				e.printStackTrace();
+				logger.error(e);
 				return;
 			} 
 			catch (ArrayIndexOutOfBoundsException e) {
-				e.printStackTrace();
+				logger.error(e);
 				return;
 			}
 			finally {
@@ -185,7 +195,7 @@ public class ConnectToMysql {
 						currentStatement.close();
 					} 
 					catch (SQLException e) {
-						e.printStackTrace();
+						logger.error(e);
 						return;
 					}
 				}
@@ -208,7 +218,7 @@ public class ConnectToMysql {
 	//					break;	
 	//
 	//				}
-	//				System.out.printf("Sleeping for %d minutes.\n", pollAfter);
+	//				logger.info("Sleeping for %d minutes.\n", pollAfter);
 	//				Thread.sleep(pollAfter*1000);
 	//				count = count+pollAfter;
 	//			}while(!isTrue && timeOutAfter>count);

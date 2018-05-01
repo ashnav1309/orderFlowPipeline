@@ -1,10 +1,15 @@
 package utilities;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 public class ConnectToServer {
+
+	private static Logger logger = LogManager.getLogger(ConnectToServer.class.getName());
 
 	private Session session = null;
 	private int LPort 		= 0;
@@ -24,28 +29,20 @@ public class ConnectToServer {
 		this.RPort = RPort;
 	}
 
-	public Boolean createSSHSession() {
-		Boolean sshConnection = false;
+	public void createSSHSession() {
 		JSch jsch = new JSch();
 		try {
 			session	= jsch.getSession(SSHUser, SSHHost, SSHPort);
 			session.setConfig("StrictHostKeyChecking", "No");
 			session.setPassword(SSHPassword);
 			session.connect(60000);
-			System.out.printf("===============================%s===================================\n",environment);
-			System.out.printf("ssh %s@%s:%d \n",SSHUser,SSHHost, SSHPort);
-			sshConnection = isSessionConnected();
+			logger.info("ssh {}@{}:{}",SSHUser,SSHHost, SSHPort);
 			lPortRhostRPort();
-			System.out.printf("===============================%s===================================\n",environment);
-			return sshConnection;
 		} 
 		catch (JSchException e) {
 			e.printStackTrace();
-			System.out.printf("==================================%s======================================\n",environment);
-			System.out.printf("ssh %s@%s:%d \n",SSHUser,SSHHost, SSHPort);
-			System.out.println("ssh established? "+sshConnection);
-			System.out.printf("==================================%s======================================\n",environment);
-			return sshConnection;
+			logger.info("ssh {}@{}:{}",SSHUser,SSHHost, SSHPort);
+			logger.info("ssh established? "+isSessionConnected());
 		}
 	}
 
@@ -58,12 +55,18 @@ public class ConnectToServer {
 	public String getRHost() {	
 		return RHost;	
 	}
+	public void startEnvironment() {
+		logger.trace("====================START-{}====================",environment.toUpperCase());
+	}
+	public void endEnvironment() {
+		logger.trace("====================END-{}====================",environment.toUpperCase());
+	}
 
-	private Boolean isSessionConnected() {
+	public Boolean isSessionConnected() {
 		Boolean isSessionConnected = false;
 		if(session != null) {
 			isSessionConnected = session.isConnected();
-			System.out.println("ssh established? "+isSessionConnected);
+			logger.info("ssh established? "+isSessionConnected);
 		}
 		return isSessionConnected;
 	}
@@ -73,11 +76,11 @@ public class ConnectToServer {
 			try {
 				session.setPortForwardingL(LPort, RHost, RPort);
 				for(String value : session.getPortForwardingL()) {
-					System.out.println(value);
+					logger.info("Local port forwarding as {}",value);
 				}
 			} 
 			catch (JSchException e) {
-				e.printStackTrace();
+				logger.error(e);
 				return;
 			}
 		}
@@ -86,7 +89,7 @@ public class ConnectToServer {
 	public void destroySSHSession() {
 		if(session != null) {
 			session.disconnect();
-			System.out.println("SSH Connection destroyed");
+			logger.info("{}@{}:{} logged out",SSHUser,SSHHost, SSHPort);
 		}
 	}
 
@@ -94,10 +97,10 @@ public class ConnectToServer {
 		if(session != null) {
 			try {
 				session.delPortForwardingL(LPort);
-				System.out.println("LPort destroyed");
+				logger.info("{} local port forwarding destroyed",LPort);
 			} 
 			catch (JSchException e) {
-				e.printStackTrace();
+				logger.error(e);
 				return;
 			}
 		}

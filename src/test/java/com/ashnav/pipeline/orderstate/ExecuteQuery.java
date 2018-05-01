@@ -1,8 +1,12 @@
 package com.ashnav.pipeline.orderstate;
 
-import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import macros.ConstantLiterals;
 import utilities.ConnectToGSheet;
@@ -11,8 +15,9 @@ import utilities.ConnectToServer;
 
 public class ExecuteQuery {
 
-	public static void executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort)  {
+	private static Logger logger = LogManager.getLogger(ExecuteQuery.class.getName());
 
+	public static void executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort)  {
 		List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Column);
 		List<ConnectToServer> sshConnections = new ArrayList<>();
 		List<ConnectToMysql> mysqlConnections = new ArrayList<>();
@@ -36,14 +41,17 @@ public class ExecuteQuery {
 		for(ConnectToServer sshConnection : sshConnections) {
 			for(ConnectToMysql mysqlConnection : mysqlConnections) {
 				if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
-					if(sshConnection.createSSHSession()) {
+					sshConnection.startEnvironment();
+					sshConnection.createSSHSession();
+					if(sshConnection.isSessionConnected()) {
 						mysqlConnection.createMYSQLConnection();
-						mysqlConnection.executeSqlScript();
-						System.out.printf("========================================================================\n");
-						mysqlConnection.destroyMySqlConnection();
+						if(mysqlConnection.isConnected()){
+							mysqlConnection.executeSqlScript();
+							mysqlConnection.destroyMySqlConnection();
+						}
 						sshConnection.destroyLPort();
 						sshConnection.destroySSHSession();
-						System.out.printf("========================================================================\n\n");
+						sshConnection.endEnvironment();
 						break;
 					}
 					break;
@@ -52,15 +60,12 @@ public class ExecuteQuery {
 		} 
 	}
 
-	public static void main(String args[]) throws IOException {
-
-		final String range 			= "ServersList!B:G";
-		final String spreadsheetId 	= "1ppbqQhNDplcH906K3oLFeLYd2d1jfQizfdr02DqpgeQ";
-		final  int 	 RPort 			= 3306;
-		final  int 	 SSHPort 		= 22;
-		String MYSQLHost 			= "127.0.0.1";
-
-		ExecuteQuery.executeOnAllEvironments(spreadsheetId, range, MYSQLHost, RPort, SSHPort);
+	public static void main(String args[]) {
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date(System.currentTimeMillis()));
+		logger.trace("~~~~~~~~~~~~~~~STARTING-"+timeStamp+"~~~~~~~~~~~~~~~");
+		ExecuteQuery.executeOnAllEvironments(ConstantLiterals.GSheetSpreadsheetId, ConstantLiterals.GSheetCellRange, ConstantLiterals.Localhost, ConstantLiterals.RPort, ConstantLiterals.SSHPort);
+		timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date(System.currentTimeMillis()));
+		logger.trace("~~~~~~~~~~~~~~~ENDING-"+timeStamp+"~~~~~~~~~~~~~~~");
 	}
 }
 
