@@ -13,8 +13,6 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import macros.ConstantLiterals;
-
 public class ConnectToMysql {
 
 	private static Logger logger = LogManager.getLogger(ConnectToMysql.class.getName());
@@ -86,7 +84,7 @@ public class ConnectToMysql {
 
 	@SuppressWarnings("resource") //resources are closed safely in finally block
 	public void executeSqlScript() {
-		String filePath = ConstantLiterals.ResourcesPath+fileName;
+		String filePath = fileName;
 		File file = new File(filePath);
 		String delimiter = ";";
 		Scanner scanner;
