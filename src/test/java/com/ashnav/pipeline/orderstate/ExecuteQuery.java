@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
+import org.testng.annotations.Test;
 
 import macros.ConstantLiterals;
 import utilities.ConnectToGSheet;
@@ -57,15 +59,17 @@ public class ExecuteQuery {
 					break;
 				}
 			}		
-		} 
+		}
 	}
-
-	public static void main(String args[]) {
+	
+	@Test
+	public static void executeOnAllEvironments() {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date(System.currentTimeMillis()));
 		logger.trace("~~~~~~~~~~~~~~~STARTING-"+timeStamp+"~~~~~~~~~~~~~~~");
 		ExecuteQuery.executeOnAllEvironments(ConstantLiterals.GSheetSpreadsheetId, ConstantLiterals.GSheetCellRange, ConstantLiterals.Localhost, ConstantLiterals.RPort, ConstantLiterals.SSHPort);
 		timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date(System.currentTimeMillis()));
 		logger.trace("~~~~~~~~~~~~~~~ENDING-"+timeStamp+"~~~~~~~~~~~~~~~");
+		Assert.assertTrue(true);
 	}
 }
 

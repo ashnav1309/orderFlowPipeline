@@ -54,3 +54,8 @@ java.io.FileNotFoundException: src/main/resources/LocalFitting_Query.sql (No suc
 2018-05-25 15:14:29 [main] INFO  ConnectToServer:92 - ashnavsaxena@54.255.251.204:22 logged out
 2018-05-25 15:14:29 [main] TRACE ConnectToServer:62 - ====================END-WEBQE====================
 2018-05-25 15:14:29 [main] TRACE ConnectToServer:59 - ====================START-POSQE====================
+2018-05-25 16:49:02 [main] TRACE ExecuteQuery:68 - ~~~~~~~~~~~~~~~STARTING-2018.05.25 16.49.02~~~~~~~~~~~~~~~
+2018-05-25 16:49:04 [main] TRACE ConnectToServer:59 - ====================START-PREPROD====================
+2018-05-25 16:49:04 [main] INFO  ConnectToServer:39 - ssh ashnavsaxena@bastion.lenskartserver.net:22
+2018-05-25 16:49:04 [main] INFO  ConnectToServer:79 - Local port forwarding as 3311:mysql-scm-rw.preprod.internal:3306
+2018-05-25 16:49:04 [main] INFO  ConnectToServer:69 - ssh established? true

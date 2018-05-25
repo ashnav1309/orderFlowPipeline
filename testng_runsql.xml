@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="RUN .sql ON ALL ENVIRONMENTS">
+    <test name="RUN_SQL" preserve-order="true" verbose="0">
+        <classes>
+            <class name	= "com.ashnav.pipeline.orderstate.ExecuteQuery" />
+         </classes>
+    </test>
+</suite>
