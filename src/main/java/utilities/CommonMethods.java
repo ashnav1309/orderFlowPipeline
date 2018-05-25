@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class CommonMethods {
 
 	public static List<Object> removeDuplicateRows(List<String> list) {
-		Set<String> dataSet = new HashSet<>(list);
+		Set<String> dataSet = new HashSet<String>(list);
 		System.out.printf("%d total record(s)\n", list.size());
 		System.out.printf("%d unique record(s)\n", dataSet.size());
 		return dataSet.stream().collect(Collectors.toList());

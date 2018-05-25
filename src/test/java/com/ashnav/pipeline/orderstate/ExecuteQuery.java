@@ -19,8 +19,8 @@ public class ExecuteQuery {
 
 	public static void executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort)  {
 		List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Column);
-		List<ConnectToServer> sshConnections = new ArrayList<>();
-		List<ConnectToMysql> mysqlConnections = new ArrayList<>();
+		List<ConnectToServer> sshConnections = new ArrayList<ConnectToServer>();
+		List<ConnectToMysql> mysqlConnections = new ArrayList<ConnectToMysql>();
 
 		for(List<Object> value : values) {
 			if(value.size() > 1){ //Size is greater than 1 because top row will always be present

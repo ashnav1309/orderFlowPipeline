@@ -17,7 +17,7 @@ public final class ConnectToCSV {
 
 	public static List<String> readCSV(String fileName, String columnName) {
 		Reader in;
-		List<String> rowsData = new ArrayList<>();
+		List<String> rowsData = new ArrayList<String>();
 		try {
 			in = new FileReader(fileName);
 		} 
@@ -42,7 +42,7 @@ public final class ConnectToCSV {
 	}
 
 	public static List<Object> removeDuplicateRows(List<String> list) {
-		Set<String> dataSet = new HashSet<>(list);
+		Set<String> dataSet = new HashSet<String>(list);
 		System.out.printf("%d total record(s)\n", list.size());
 		System.out.printf("%d unique record(s)\n", dataSet.size());
 		return dataSet.stream().collect(Collectors.toList());
