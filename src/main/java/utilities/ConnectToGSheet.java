@@ -94,8 +94,6 @@ public final class ConnectToGSheet {
 					return null;
 				} 
 				else {
-					System.out.println(response.toPrettyString());
-					System.out.printf("\n");
 					return listListObject;
 				}
 			}

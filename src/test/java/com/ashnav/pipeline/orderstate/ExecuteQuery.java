@@ -29,13 +29,13 @@ public class ExecuteQuery {
 				String environment		= value.get(0).toString();
 				String RHost 			= value.get(1).toString();
 				String MYSQLUser 		= value.get(2).toString();
-				String MYSQLPassword 	= value.get(3).toString();
-				String SSHHost 			= value.get(4).toString();
-				String SSHUser 			= value.get(5).toString();
-				String SSHPassword 		= value.get(6).toString();
-				String fileName			= value.get(8).toString();
-				String SSHRequired		= value.get(9).toString();
-				int LPort				= Integer.parseInt(value.get(7).toString());
+				String MYSQLPassword 	= value.get(8).toString();
+				String SSHHost 			= value.get(3).toString();
+				String SSHUser 			= value.get(4).toString();
+				String SSHPassword 		= value.get(9).toString();
+				String fileName			= value.get(6).toString();
+				String SSHRequired		= value.get(7).toString();
+				int LPort				= Integer.parseInt(value.get(5).toString());
 				sshConnections.add(new ConnectToServer(environment, SSHUser, SSHHost, SSHPassword, SSHPort, LPort, RHost, MYSQLPort, SSHRequired));
 				mysqlConnections.add(new ConnectToMysql(MYSQLHost, MYSQLUser, MYSQLPassword, LPort, fileName));
 			}
@@ -43,8 +43,8 @@ public class ExecuteQuery {
 
 		for(ConnectToServer sshConnection : sshConnections) {
 			for(ConnectToMysql mysqlConnection : mysqlConnections) {
-				if(sshConnection.getSSHRequired()) {
-					if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
+				if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
+					if(sshConnection.getSSHRequired()) {
 						sshConnection.startEnvironment();
 						sshConnection.createSSHSession();
 						if(sshConnection.isSessionConnected()) {
@@ -58,14 +58,20 @@ public class ExecuteQuery {
 							sshConnection.endEnvironment();
 							break;
 						}
+						else {
+							logger.info("No Query executed!!");
+							sshConnection.endEnvironment();
+							}
 						break;
 					}
-				}
-				else {
-					mysqlConnection.createMYSQLConnection();
-					if(mysqlConnection.isConnected()){
-						mysqlConnection.executeSqlScript();
-						mysqlConnection.destroyMySqlConnection();
+					else {
+						sshConnection.startEnvironment();
+						mysqlConnection.createMYSQLConnection();
+						if(mysqlConnection.isConnected()){
+							mysqlConnection.executeSqlScript();
+							mysqlConnection.destroyMySqlConnection();
+						}
+						sshConnection.endEnvironment();
 					}
 				}
 			}		

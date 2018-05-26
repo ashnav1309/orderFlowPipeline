@@ -33,14 +33,12 @@ public class ConnectToServer {
 	public void createSSHSession() {
 		JSch jsch = new JSch();
 		try {
-			if(SSHRequired.toLowerCase() == "true") {
 				session	= jsch.getSession(SSHUser, SSHHost, SSHPort);
 				session.setConfig("StrictHostKeyChecking", "No");
 				session.setPassword(SSHPassword);
 				session.connect(60000);
 				logger.info("ssh {}@{}:{}",SSHUser,SSHHost, SSHPort);
 				lPortRhostRPort();
-			}
 		} 
 		catch (JSchException e) {
 			e.printStackTrace();

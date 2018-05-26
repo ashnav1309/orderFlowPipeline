@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10995" started-at="2018-05-25T14:13:51Z" finished-at="2018-05-25T14:14:02Z">
+  <suite name="Default suite" duration-ms="20204" started-at="2018-05-26T16:10:49Z" finished-at="2018-05-26T16:11:09Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10995" started-at="2018-05-25T14:13:51Z" finished-at="2018-05-25T14:14:02Z">
+    <test name="Default test" duration-ms="20204" started-at="2018-05-26T16:10:49Z" finished-at="2018-05-26T16:11:09Z">
       <class name="com.ashnav.pipeline.orderstate.ExecuteQuery">
-        <test-method status="PASS" signature="executeOnAllEvironments()[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuery@158da8e]" name="executeOnAllEvironments" duration-ms="10984" started-at="2018-05-25T19:43:51Z" finished-at="2018-05-25T19:44:02Z">
+        <test-method status="PASS" signature="executeOnAllEvironments()[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuery@158da8e]" name="executeOnAllEvironments" duration-ms="20192" started-at="2018-05-26T21:40:49Z" finished-at="2018-05-26T21:41:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- executeOnAllEvironments -->

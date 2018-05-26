@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="utilities.ReadCSV">
+      <class name="com.ashnav.pipeline.orderstate.ExecuteQuery">
         <methods>
-          <include name="givenCSVFile_whenRead_thenContentsAsExpected"/>
+          <include name="executeOnAllEvironments"/>
         </methods>
-      </class> <!-- utilities.ReadCSV -->
+      </class> <!-- com.ashnav.pipeline.orderstate.ExecuteQuery -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

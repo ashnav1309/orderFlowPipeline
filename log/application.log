@@ -151,3 +151,126 @@ java.io.FileNotFoundException: src/main/resources/LocalFitting_Query.sql (No suc
 2018-05-25 19:44:02 [main] INFO  ConnectToServer:92 - ashnavsaxena@13.228.213.25:22 logged out
 2018-05-25 19:44:02 [main] TRACE ConnectToServer:62 - ====================END-DEVELOPMENT====================
 2018-05-25 19:44:02 [main] TRACE ExecuteQuery:71 - ~~~~~~~~~~~~~~~ENDING-2018.05.25.19.44.02~~~~~~~~~~~~~~~
+2018-05-26 21:00:55 [main] TRACE ExecuteQuery:78 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.00.55~~~~~~~~~~~~~~~
+2018-05-26 21:01:01 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:01:10 [main] TRACE ExecuteQuery:78 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.01.10~~~~~~~~~~~~~~~
+2018-05-26 21:01:15 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:01:19 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:01:31 [main] TRACE ExecuteQuery:78 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.01.31~~~~~~~~~~~~~~~
+2018-05-26 21:03:43 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:04:27 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:19:07 [main] TRACE ExecuteQuery:78 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.19.07~~~~~~~~~~~~~~~
+2018-05-26 21:19:12 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:19:12 [main] TRACE ConnectToServer:66 - ====================START-SCMQE====================
+2018-05-26 21:19:12 [main] TRACE ConnectToServer:66 - ====================START-WEBQE====================
+2018-05-26 21:19:12 [main] TRACE ConnectToServer:66 - ====================START-POSQE====================
+2018-05-26 21:19:12 [main] TRACE ConnectToServer:66 - ====================START-UPGRADEDEVQE====================
+2018-05-26 21:19:12 [main] TRACE ConnectToServer:66 - ====================START-DEVELOPMENT====================
+2018-05-26 21:19:12 [main] TRACE ExecuteQuery:81 - ~~~~~~~~~~~~~~~ENDING-2018.05.26.21.19.12~~~~~~~~~~~~~~~
+2018-05-26 21:19:57 [main] TRACE ExecuteQuery:78 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.19.57~~~~~~~~~~~~~~~
+2018-05-26 21:20:55 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:21:15 [main] TRACE ConnectToServer:66 - ====================START-SCMQE====================
+2018-05-26 21:23:42 [main] TRACE ExecuteQuery:83 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.23.42~~~~~~~~~~~~~~~
+2018-05-26 21:23:43 [main] TRACE ConnectToServer:66 - ====================START-PREPROD====================
+2018-05-26 21:23:48 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:69 - ====================END-PREPROD====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:66 - ====================START-SCMQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:69 - ====================END-SCMQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:66 - ====================START-WEBQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:69 - ====================END-WEBQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:66 - ====================START-POSQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:69 - ====================END-POSQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:66 - ====================START-UPGRADEDEVQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:69 - ====================END-UPGRADEDEVQE====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:66 - ====================START-DEVELOPMENT====================
+2018-05-26 21:23:48 [main] TRACE ConnectToServer:69 - ====================END-DEVELOPMENT====================
+2018-05-26 21:23:48 [main] TRACE ExecuteQuery:86 - ~~~~~~~~~~~~~~~ENDING-2018.05.26.21.23.48~~~~~~~~~~~~~~~
+2018-05-26 21:29:57 [main] TRACE ExecuteQuery:84 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.29.57~~~~~~~~~~~~~~~
+2018-05-26 21:31:34 [main] TRACE ExecuteQuery:84 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.31.34~~~~~~~~~~~~~~~
+2018-05-26 21:31:36 [main] TRACE ConnectToServer:66 - ====================START-PREPROD====================
+2018-05-26 21:31:40 [main] ERROR ConnectToMysql:52 - java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:69 - ====================END-PREPROD====================
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:66 - ====================START-SCMQE====================
+2018-05-26 21:31:40 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:69 - ====================END-SCMQE====================
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:66 - ====================START-WEBQE====================
+2018-05-26 21:31:40 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:69 - ====================END-WEBQE====================
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:66 - ====================START-POSQE====================
+2018-05-26 21:31:40 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:69 - ====================END-POSQE====================
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:66 - ====================START-UPGRADEDEVQE====================
+2018-05-26 21:31:40 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:69 - ====================END-UPGRADEDEVQE====================
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:66 - ====================START-DEVELOPMENT====================
+2018-05-26 21:31:40 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:31:40 [main] TRACE ConnectToServer:69 - ====================END-DEVELOPMENT====================
+2018-05-26 21:31:40 [main] TRACE ExecuteQuery:87 - ~~~~~~~~~~~~~~~ENDING-2018.05.26.21.31.40~~~~~~~~~~~~~~~
+2018-05-26 21:39:55 [main] TRACE ExecuteQuery:84 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.39.55~~~~~~~~~~~~~~~
+2018-05-26 21:39:56 [main] TRACE ConnectToServer:66 - ====================START-PREPROD====================
+2018-05-26 21:40:10 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:40:11 [main] TRACE ConnectToServer:69 - ====================END-PREPROD====================
+2018-05-26 21:40:16 [main] TRACE ConnectToServer:66 - ====================START-SCMQE====================
+2018-05-26 21:40:49 [main] TRACE ExecuteQuery:84 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.40.49~~~~~~~~~~~~~~~
+2018-05-26 21:40:51 [main] TRACE ConnectToServer:64 - ====================START-PREPROD====================
+2018-05-26 21:40:54 [main] INFO  ConnectToServer:45 - ssh ashnavsaxena@bastion.lenskartserver.net:22
+2018-05-26 21:40:54 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:40:54 [main] INFO  ConnectToServer:46 - ssh established? false
+2018-05-26 21:40:54 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:40:54 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:40:54 [main] TRACE ConnectToServer:67 - ====================END-PREPROD====================
+2018-05-26 21:40:54 [main] TRACE ConnectToServer:64 - ====================START-SCMQE====================
+2018-05-26 21:40:57 [main] INFO  ConnectToServer:45 - ssh ashnavsaxena@54.255.251.151:22
+2018-05-26 21:40:57 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:40:57 [main] INFO  ConnectToServer:46 - ssh established? false
+2018-05-26 21:40:57 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:40:57 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:40:57 [main] TRACE ConnectToServer:67 - ====================END-SCMQE====================
+2018-05-26 21:40:57 [main] TRACE ConnectToServer:64 - ====================START-WEBQE====================
+2018-05-26 21:41:00 [main] INFO  ConnectToServer:45 - ssh ashnavsaxena@54.255.251.204:22
+2018-05-26 21:41:00 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:00 [main] INFO  ConnectToServer:46 - ssh established? false
+2018-05-26 21:41:00 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:00 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:41:00 [main] TRACE ConnectToServer:67 - ====================END-WEBQE====================
+2018-05-26 21:41:00 [main] TRACE ConnectToServer:64 - ====================START-POSQE====================
+2018-05-26 21:41:03 [main] INFO  ConnectToServer:45 - ssh ashnavsaxena@13.228.2.47:22
+2018-05-26 21:41:03 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:03 [main] INFO  ConnectToServer:46 - ssh established? false
+2018-05-26 21:41:03 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:03 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:41:03 [main] TRACE ConnectToServer:67 - ====================END-POSQE====================
+2018-05-26 21:41:03 [main] TRACE ConnectToServer:64 - ====================START-UPGRADEDEVQE====================
+2018-05-26 21:41:06 [main] INFO  ConnectToServer:45 - ssh ashnavsaxena@52.74.17.133:22
+2018-05-26 21:41:06 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:06 [main] INFO  ConnectToServer:46 - ssh established? false
+2018-05-26 21:41:06 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:06 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:41:06 [main] TRACE ConnectToServer:67 - ====================END-UPGRADEDEVQE====================
+2018-05-26 21:41:06 [main] TRACE ConnectToServer:64 - ====================START-DEVELOPMENT====================
+2018-05-26 21:41:09 [main] INFO  ConnectToServer:45 - ssh ashnavsaxena@13.228.213.25:22
+2018-05-26 21:41:09 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:09 [main] INFO  ConnectToServer:46 - ssh established? false
+2018-05-26 21:41:09 [main] INFO  ConnectToServer:74 - ssh established? false
+2018-05-26 21:41:09 [main] INFO  ExecuteQuery:62 - No Query executed!!
+2018-05-26 21:41:09 [main] TRACE ConnectToServer:67 - ====================END-DEVELOPMENT====================
+2018-05-26 21:41:09 [main] TRACE ExecuteQuery:87 - ~~~~~~~~~~~~~~~ENDING-2018.05.26.21.41.09~~~~~~~~~~~~~~~
+2018-05-26 21:41:51 [main] TRACE ExecuteQuery:84 - ~~~~~~~~~~~~~~~STARTING-2018.05.26 21.41.51~~~~~~~~~~~~~~~
+2018-05-26 21:41:53 [main] TRACE ConnectToServer:64 - ====================START-PREPROD====================
+2018-05-26 21:42:56 [main] INFO  ConnectToServer:40 - ssh ashnavsaxena@bastion.lenskartserver.net:22
+2018-05-26 21:42:56 [main] INFO  ConnectToServer:84 - Local port forwarding as 3311:mysql-scm-rw.preprod.internal:3306
+2018-05-26 21:42:56 [main] INFO  ConnectToServer:74 - ssh established? true
+2018-05-26 21:42:58 [main] INFO  ConnectToMysql:49 - JDBC Connection to jdbc:mysql://127.0.0.1:3311 established? true
+2018-05-26 21:42:58 [main] INFO  ConnectToMysql:93 - Executing scripts from query.sql
+2018-05-26 21:42:58 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-26 21:42:58 [main] TRACE ConnectToMysql:108 - Empty Query
+2018-05-26 21:42:58 [main] TRACE ConnectToMysql:109 - ++++++++++END-QUERY++++++++++++
+2018-05-26 21:42:58 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-26 21:42:58 [main] TRACE ConnectToMysql:113 - Select 1;
+2018-05-26 21:42:58 [main] TRACE ConnectToMysql:114 - ++++++++++END-QUERY++++++++++++
+2018-05-26 21:42:58 [main] INFO  ConnectToMysql:117 - -1 row(s) updated
+2018-05-26 21:42:58 [main] INFO  ConnectToMysql:76 - JDBC Connection to jdbc:mysql://127.0.0.1:3311 destroyed? true
+2018-05-26 21:42:58 [main] INFO  ConnectToServer:105 - 3311 local port forwarding destroyed
+2018-05-26 21:42:58 [main] INFO  ConnectToServer:97 - ashnavsaxena@bastion.lenskartserver.net:22 logged out
+2018-05-26 21:42:58 [main] TRACE ConnectToServer:67 - ====================END-PREPROD====================
+2018-05-26 21:42:58 [main] TRACE ConnectToServer:64 - ====================START-SCMQE====================
