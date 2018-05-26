@@ -19,8 +19,13 @@ public class ExecuteQuery {
 
 	private static Logger logger = LogManager.getLogger(ExecuteQuery.class.getName());
 
-	public static void executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort)  {
+	public static Boolean executeOnAllEvironments(String spreadsheetId, String range, String MYSQLHost, int MYSQLPort, int SSHPort)  {
+
+		Boolean condition = false;
+		int count = 0;
+		int environmentCount = 0;
 		List<List<Object>> values = ConnectToGSheet.getCellValues(spreadsheetId, range, ConstantLiterals.MajorDimension_Column);
+		environmentCount = values.size();
 		List<ConnectToServer> sshConnections = new ArrayList<ConnectToServer>();
 		List<ConnectToMysql> mysqlConnections = new ArrayList<ConnectToMysql>();
 
@@ -44,13 +49,14 @@ public class ExecuteQuery {
 		for(ConnectToServer sshConnection : sshConnections) {
 			for(ConnectToMysql mysqlConnection : mysqlConnections) {
 				if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
+					sshConnection.startEnvironment();
 					if(sshConnection.getSSHRequired()) {
-						sshConnection.startEnvironment();
 						sshConnection.createSSHSession();
 						if(sshConnection.isSessionConnected()) {
 							mysqlConnection.createMYSQLConnection();
 							if(mysqlConnection.isConnected()){
 								mysqlConnection.executeSqlScript();
+								count++;
 								mysqlConnection.destroyMySqlConnection();
 							}
 							sshConnection.destroyLPort();
@@ -60,32 +66,40 @@ public class ExecuteQuery {
 						}
 						else {
 							logger.info("No Query executed!!");
-							sshConnection.endEnvironment();
-							}
-						break;
+						}
 					}
 					else {
-						sshConnection.startEnvironment();
 						mysqlConnection.createMYSQLConnection();
 						if(mysqlConnection.isConnected()){
 							mysqlConnection.executeSqlScript();
+							count++;
 							mysqlConnection.destroyMySqlConnection();
 						}
-						sshConnection.endEnvironment();
+						else {
+							logger.info("No Query executed!!");
+						}
+						break;
 					}
+					sshConnection.endEnvironment();
 				}
 			}		
 		}
+		System.out.println("count: "+count);
+		System.out.println("environmentCount: "+environmentCount);
+		if(count == environmentCount) {
+			condition = true;
+		}
+		return condition;
 	}
 
 	@Test
 	public static void executeOnAllEvironments() {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date(System.currentTimeMillis()));
 		logger.trace("~~~~~~~~~~~~~~~STARTING-"+timeStamp+"~~~~~~~~~~~~~~~");
-		ExecuteQuery.executeOnAllEvironments(ConstantLiterals.GSheetSpreadsheetId, ConstantLiterals.GSheetCellRange, ConstantLiterals.Localhost, ConstantLiterals.RPort, ConstantLiterals.SSHPort);
+		Boolean condition = ExecuteQuery.executeOnAllEvironments(ConstantLiterals.GSheetSpreadsheetId, ConstantLiterals.GSheetCellRange, ConstantLiterals.Localhost, ConstantLiterals.RPort, ConstantLiterals.SSHPort);
 		timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date(System.currentTimeMillis()));
 		logger.trace("~~~~~~~~~~~~~~~ENDING-"+timeStamp+"~~~~~~~~~~~~~~~");
-		Assert.assertTrue(true);
+		Assert.assertTrue("Query is NOT executed on all environments. Refer logs to know more", condition);
 	}
 }
 
