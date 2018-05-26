@@ -16,9 +16,9 @@ public class ConnectToServer {
 	private int RPort 		= 0;
 	private int SSHPort 	= 0;
 	private String RHost 	= null;
-	private String SSHUser, SSHHost, SSHPassword, environment;
+	private String SSHUser, SSHHost, SSHPassword, environment, SSHRequired;
 
-	public ConnectToServer(String environment, String SSHUser, String SSHHost, String SSHPassword, int SSHPort, int LPort, String RHost, int RPort) {
+	public ConnectToServer(String environment, String SSHUser, String SSHHost, String SSHPassword, int SSHPort, int LPort, String RHost, int RPort, String SSHRequired) {
 		this.environment = environment;
 		this.SSHUser = SSHUser;
 		this.SSHHost = SSHHost;
@@ -27,23 +27,30 @@ public class ConnectToServer {
 		this.RHost = RHost;
 		this.LPort = LPort;
 		this.RPort = RPort;
+		this.SSHRequired = SSHRequired;
 	}
 
 	public void createSSHSession() {
 		JSch jsch = new JSch();
 		try {
-			session	= jsch.getSession(SSHUser, SSHHost, SSHPort);
-			session.setConfig("StrictHostKeyChecking", "No");
-			session.setPassword(SSHPassword);
-			session.connect(60000);
-			logger.info("ssh {}@{}:{}",SSHUser,SSHHost, SSHPort);
-			lPortRhostRPort();
+			if(SSHRequired.toLowerCase() == "true") {
+				session	= jsch.getSession(SSHUser, SSHHost, SSHPort);
+				session.setConfig("StrictHostKeyChecking", "No");
+				session.setPassword(SSHPassword);
+				session.connect(60000);
+				logger.info("ssh {}@{}:{}",SSHUser,SSHHost, SSHPort);
+				lPortRhostRPort();
+			}
 		} 
 		catch (JSchException e) {
 			e.printStackTrace();
 			logger.info("ssh {}@{}:{}",SSHUser,SSHHost, SSHPort);
 			logger.info("ssh established? "+isSessionConnected());
 		}
+	}
+	
+	public Boolean getSSHRequired() {
+		return Boolean.valueOf(SSHRequired);
 	}
 
 	public int getLPort() {	

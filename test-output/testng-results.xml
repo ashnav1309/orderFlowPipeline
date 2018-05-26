@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="20" started-at="2018-03-16T13:52:09Z" finished-at="2018-03-16T13:52:09Z">
+  <suite name="Default suite" duration-ms="10995" started-at="2018-05-25T14:13:51Z" finished-at="2018-05-25T14:14:02Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="20" started-at="2018-03-16T13:52:09Z" finished-at="2018-03-16T13:52:09Z">
-      <class name="com.ashnav.pipeline.orderstate.AppTest">
-        <test-method status="PASS" signature="example()[pri:0, instance:com.ashnav.pipeline.orderstate.AppTest@402f32ff]" name="example" duration-ms="8" started-at="2018-03-16T19:22:09Z" finished-at="2018-03-16T19:22:09Z">
+    <test name="Default test" duration-ms="10995" started-at="2018-05-25T14:13:51Z" finished-at="2018-05-25T14:14:02Z">
+      <class name="com.ashnav.pipeline.orderstate.ExecuteQuery">
+        <test-method status="PASS" signature="executeOnAllEvironments()[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuery@158da8e]" name="executeOnAllEvironments" duration-ms="10984" started-at="2018-05-25T19:43:51Z" finished-at="2018-05-25T19:44:02Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- example -->
-      </class> <!-- com.ashnav.pipeline.orderstate.AppTest -->
+        </test-method> <!-- executeOnAllEvironments -->
+      </class> <!-- com.ashnav.pipeline.orderstate.ExecuteQuery -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

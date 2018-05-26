@@ -59,3 +59,95 @@ java.io.FileNotFoundException: src/main/resources/LocalFitting_Query.sql (No suc
 2018-05-25 16:49:04 [main] INFO  ConnectToServer:39 - ssh ashnavsaxena@bastion.lenskartserver.net:22
 2018-05-25 16:49:04 [main] INFO  ConnectToServer:79 - Local port forwarding as 3311:mysql-scm-rw.preprod.internal:3306
 2018-05-25 16:49:04 [main] INFO  ConnectToServer:69 - ssh established? true
+2018-05-25 19:43:51 [main] TRACE ExecuteQuery:68 - ~~~~~~~~~~~~~~~STARTING-2018.05.25 19.43.51~~~~~~~~~~~~~~~
+2018-05-25 19:43:53 [main] TRACE ConnectToServer:59 - ====================START-PREPROD====================
+2018-05-25 19:43:53 [main] INFO  ConnectToServer:44 - ssh ashnavsaxena@:22
+2018-05-25 19:43:53 [main] INFO  ConnectToServer:69 - ssh established? false
+2018-05-25 19:43:53 [main] INFO  ConnectToServer:45 - ssh established? false
+2018-05-25 19:43:53 [main] INFO  ConnectToServer:69 - ssh established? false
+2018-05-25 19:43:53 [main] TRACE ConnectToServer:59 - ====================START-SCMQE====================
+2018-05-25 19:43:54 [main] INFO  ConnectToServer:39 - ssh ashnavsaxena@54.255.251.151:22
+2018-05-25 19:43:54 [main] INFO  ConnectToServer:79 - Local port forwarding as 3312:mysql-scm-rw.scmqe.internal:3306
+2018-05-25 19:43:54 [main] INFO  ConnectToServer:69 - ssh established? true
+2018-05-25 19:43:55 [main] INFO  ConnectToMysql:49 - JDBC Connection to jdbc:mysql://127.0.0.1:3312 established? true
+2018-05-25 19:43:55 [main] INFO  ConnectToMysql:93 - Executing scripts from query.sql
+2018-05-25 19:43:55 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:43:55 [main] TRACE ConnectToMysql:108 - Empty Query
+2018-05-25 19:43:55 [main] TRACE ConnectToMysql:109 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:43:55 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:43:55 [main] TRACE ConnectToMysql:113 - Select 1;
+2018-05-25 19:43:55 [main] TRACE ConnectToMysql:114 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:43:55 [main] INFO  ConnectToMysql:117 - -1 row(s) updated
+2018-05-25 19:43:55 [main] INFO  ConnectToMysql:76 - JDBC Connection to jdbc:mysql://127.0.0.1:3312 destroyed? true
+2018-05-25 19:43:55 [main] INFO  ConnectToServer:100 - 3312 local port forwarding destroyed
+2018-05-25 19:43:55 [main] INFO  ConnectToServer:92 - ashnavsaxena@54.255.251.151:22 logged out
+2018-05-25 19:43:55 [main] TRACE ConnectToServer:62 - ====================END-SCMQE====================
+2018-05-25 19:43:55 [main] TRACE ConnectToServer:59 - ====================START-WEBQE====================
+2018-05-25 19:43:56 [main] INFO  ConnectToServer:39 - ssh ashnavsaxena@54.255.251.204:22
+2018-05-25 19:43:56 [main] INFO  ConnectToServer:79 - Local port forwarding as 3313:mysql-scm-rw.webqe.internal:3306
+2018-05-25 19:43:56 [main] INFO  ConnectToServer:69 - ssh established? true
+2018-05-25 19:43:57 [main] INFO  ConnectToMysql:49 - JDBC Connection to jdbc:mysql://127.0.0.1:3313 established? true
+2018-05-25 19:43:57 [main] INFO  ConnectToMysql:93 - Executing scripts from query.sql
+2018-05-25 19:43:57 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:43:57 [main] TRACE ConnectToMysql:108 - Empty Query
+2018-05-25 19:43:57 [main] TRACE ConnectToMysql:109 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:43:57 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:43:57 [main] TRACE ConnectToMysql:113 - Select 1;
+2018-05-25 19:43:57 [main] TRACE ConnectToMysql:114 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:43:57 [main] INFO  ConnectToMysql:117 - -1 row(s) updated
+2018-05-25 19:43:57 [main] INFO  ConnectToMysql:76 - JDBC Connection to jdbc:mysql://127.0.0.1:3313 destroyed? true
+2018-05-25 19:43:57 [main] INFO  ConnectToServer:100 - 3313 local port forwarding destroyed
+2018-05-25 19:43:57 [main] INFO  ConnectToServer:92 - ashnavsaxena@54.255.251.204:22 logged out
+2018-05-25 19:43:57 [main] TRACE ConnectToServer:62 - ====================END-WEBQE====================
+2018-05-25 19:43:57 [main] TRACE ConnectToServer:59 - ====================START-POSQE====================
+2018-05-25 19:43:58 [main] INFO  ConnectToServer:39 - ssh ashnavsaxena@13.228.2.47:22
+2018-05-25 19:43:58 [main] INFO  ConnectToServer:79 - Local port forwarding as 3314:mysql-scm-rw.posqe.internal:3306
+2018-05-25 19:43:58 [main] INFO  ConnectToServer:69 - ssh established? true
+2018-05-25 19:43:59 [main] INFO  ConnectToMysql:49 - JDBC Connection to jdbc:mysql://127.0.0.1:3314 established? true
+2018-05-25 19:43:59 [main] INFO  ConnectToMysql:93 - Executing scripts from query.sql
+2018-05-25 19:43:59 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:43:59 [main] TRACE ConnectToMysql:108 - Empty Query
+2018-05-25 19:43:59 [main] TRACE ConnectToMysql:109 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:43:59 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:43:59 [main] TRACE ConnectToMysql:113 - Select 1;
+2018-05-25 19:43:59 [main] TRACE ConnectToMysql:114 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:43:59 [main] INFO  ConnectToMysql:117 - -1 row(s) updated
+2018-05-25 19:43:59 [main] INFO  ConnectToMysql:76 - JDBC Connection to jdbc:mysql://127.0.0.1:3314 destroyed? true
+2018-05-25 19:43:59 [main] INFO  ConnectToServer:100 - 3314 local port forwarding destroyed
+2018-05-25 19:43:59 [main] INFO  ConnectToServer:92 - ashnavsaxena@13.228.2.47:22 logged out
+2018-05-25 19:43:59 [main] TRACE ConnectToServer:62 - ====================END-POSQE====================
+2018-05-25 19:43:59 [main] TRACE ConnectToServer:59 - ====================START-UPGRADEDEVQE====================
+2018-05-25 19:44:00 [main] INFO  ConnectToServer:39 - ssh ashnavsaxena@52.74.17.133:22
+2018-05-25 19:44:00 [main] INFO  ConnectToServer:79 - Local port forwarding as 3315:mysql-scm-rw.upgradedevqe.internal:3306
+2018-05-25 19:44:00 [main] INFO  ConnectToServer:69 - ssh established? true
+2018-05-25 19:44:00 [main] INFO  ConnectToMysql:49 - JDBC Connection to jdbc:mysql://127.0.0.1:3315 established? true
+2018-05-25 19:44:00 [main] INFO  ConnectToMysql:93 - Executing scripts from query.sql
+2018-05-25 19:44:00 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:44:00 [main] TRACE ConnectToMysql:108 - Empty Query
+2018-05-25 19:44:00 [main] TRACE ConnectToMysql:109 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:44:00 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:44:00 [main] TRACE ConnectToMysql:113 - Select 1;
+2018-05-25 19:44:00 [main] TRACE ConnectToMysql:114 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:44:01 [main] INFO  ConnectToMysql:117 - -1 row(s) updated
+2018-05-25 19:44:01 [main] INFO  ConnectToMysql:76 - JDBC Connection to jdbc:mysql://127.0.0.1:3315 destroyed? true
+2018-05-25 19:44:01 [main] INFO  ConnectToServer:100 - 3315 local port forwarding destroyed
+2018-05-25 19:44:01 [main] INFO  ConnectToServer:92 - ashnavsaxena@52.74.17.133:22 logged out
+2018-05-25 19:44:01 [main] TRACE ConnectToServer:62 - ====================END-UPGRADEDEVQE====================
+2018-05-25 19:44:01 [main] TRACE ConnectToServer:59 - ====================START-DEVELOPMENT====================
+2018-05-25 19:44:01 [main] INFO  ConnectToServer:39 - ssh ashnavsaxena@13.228.213.25:22
+2018-05-25 19:44:01 [main] INFO  ConnectToServer:79 - Local port forwarding as 3316:mysql-scm-rw.development.internal:3306
+2018-05-25 19:44:01 [main] INFO  ConnectToServer:69 - ssh established? true
+2018-05-25 19:44:02 [main] INFO  ConnectToMysql:49 - JDBC Connection to jdbc:mysql://127.0.0.1:3316 established? true
+2018-05-25 19:44:02 [main] INFO  ConnectToMysql:93 - Executing scripts from query.sql
+2018-05-25 19:44:02 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:44:02 [main] TRACE ConnectToMysql:108 - Empty Query
+2018-05-25 19:44:02 [main] TRACE ConnectToMysql:109 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:44:02 [main] TRACE ConnectToMysql:106 - ++++++++++START-QUERY++++++++++
+2018-05-25 19:44:02 [main] TRACE ConnectToMysql:113 - Select 1;
+2018-05-25 19:44:02 [main] TRACE ConnectToMysql:114 - ++++++++++END-QUERY++++++++++++
+2018-05-25 19:44:02 [main] INFO  ConnectToMysql:117 - -1 row(s) updated
+2018-05-25 19:44:02 [main] INFO  ConnectToMysql:76 - JDBC Connection to jdbc:mysql://127.0.0.1:3316 destroyed? true
+2018-05-25 19:44:02 [main] INFO  ConnectToServer:100 - 3316 local port forwarding destroyed
+2018-05-25 19:44:02 [main] INFO  ConnectToServer:92 - ashnavsaxena@13.228.213.25:22 logged out
+2018-05-25 19:44:02 [main] TRACE ConnectToServer:62 - ====================END-DEVELOPMENT====================
+2018-05-25 19:44:02 [main] TRACE ExecuteQuery:71 - ~~~~~~~~~~~~~~~ENDING-2018.05.25.19.44.02~~~~~~~~~~~~~~~

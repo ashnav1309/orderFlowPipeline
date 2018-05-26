@@ -34,34 +34,44 @@ public class ExecuteQuery {
 				String SSHUser 			= value.get(5).toString();
 				String SSHPassword 		= value.get(6).toString();
 				String fileName			= value.get(8).toString();
+				String SSHRequired		= value.get(9).toString();
 				int LPort				= Integer.parseInt(value.get(7).toString());
-				sshConnections.add(new ConnectToServer(environment, SSHUser, SSHHost, SSHPassword, SSHPort, LPort, RHost, MYSQLPort));
+				sshConnections.add(new ConnectToServer(environment, SSHUser, SSHHost, SSHPassword, SSHPort, LPort, RHost, MYSQLPort, SSHRequired));
 				mysqlConnections.add(new ConnectToMysql(MYSQLHost, MYSQLUser, MYSQLPassword, LPort, fileName));
 			}
 		}
 
 		for(ConnectToServer sshConnection : sshConnections) {
 			for(ConnectToMysql mysqlConnection : mysqlConnections) {
-				if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
-					sshConnection.startEnvironment();
-					sshConnection.createSSHSession();
-					if(sshConnection.isSessionConnected()) {
-						mysqlConnection.createMYSQLConnection();
-						if(mysqlConnection.isConnected()){
-							mysqlConnection.executeSqlScript();
-							mysqlConnection.destroyMySqlConnection();
+				if(sshConnection.getSSHRequired()) {
+					if(mysqlConnection.getLPort() == sshConnection.getLPort()) {
+						sshConnection.startEnvironment();
+						sshConnection.createSSHSession();
+						if(sshConnection.isSessionConnected()) {
+							mysqlConnection.createMYSQLConnection();
+							if(mysqlConnection.isConnected()){
+								mysqlConnection.executeSqlScript();
+								mysqlConnection.destroyMySqlConnection();
+							}
+							sshConnection.destroyLPort();
+							sshConnection.destroySSHSession();
+							sshConnection.endEnvironment();
+							break;
 						}
-						sshConnection.destroyLPort();
-						sshConnection.destroySSHSession();
-						sshConnection.endEnvironment();
 						break;
 					}
-					break;
+				}
+				else {
+					mysqlConnection.createMYSQLConnection();
+					if(mysqlConnection.isConnected()){
+						mysqlConnection.executeSqlScript();
+						mysqlConnection.destroyMySqlConnection();
+					}
 				}
 			}		
 		}
 	}
-	
+
 	@Test
 	public static void executeOnAllEvironments() {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new Date(System.currentTimeMillis()));
