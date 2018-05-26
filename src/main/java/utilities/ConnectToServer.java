@@ -43,7 +43,6 @@ public class ConnectToServer {
 		catch (JSchException e) {
 			e.printStackTrace();
 			logger.info("ssh {}@{}:{}",SSHUser,SSHHost, SSHPort);
-			logger.info("ssh established? "+isSessionConnected());
 		}
 	}
 	
