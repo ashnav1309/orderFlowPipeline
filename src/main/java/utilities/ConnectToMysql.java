@@ -202,40 +202,6 @@ public class ConnectToMysql {
 		}
 		scanner.close();
 	}
-
-	//	public static Boolean getWatchDogOn(int pollAfter, int timeOutAfter) {
-	//
-	//		int count = 0;
-	//		Boolean isTrue = false;
-	//
-	//		try {
-	//			do{
-	//				if(false) {
-	//
-	//					isTrue = true;
-	//					break;	
-	//
-	//				}
-	//				logger.info("Sleeping for %d minutes.\n", pollAfter);
-	//				Thread.sleep(pollAfter*1000);
-	//				count = count+pollAfter;
-	//			}while(!isTrue && timeOutAfter>count);
-	//			throw new InterruptedByTimeoutException();
-	//		}
-	//		catch(InterruptedByTimeoutException e) {
-	//
-	//			e.printStackTrace();
-	//			isTrue = false;
-	//			
-	//		}
-	//		catch(InterruptedException e) {
-	//
-	//			e.printStackTrace();
-	//			isTrue = false;
-	//			
-	//		}
-	//		return isTrue;
-	//	}
 }
 
 
