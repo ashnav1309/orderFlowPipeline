@@ -43,7 +43,7 @@ public class ExecuteQuerywithMultipleThreads2 {
 	public void executeQuery(String environment, String create, String rHost, String mySqlUser, String sshHost, String sshUser,
 			String lPort, String fileName, String sshRequired, String mySqlPassword, String sshPassword) {
 		LocalTime timeStamp = LocalTime.now();
-		logger.trace("~~~~~~~~~~~~~~~STARTING on-"+environment+" @"+timeStamp+"~~~~~~~~~~~~~~~");
+		logger.trace("STARTING on-"+environment+" @"+timeStamp);
 		String domain 				= System.getProperty("Component");
 		rHost 						= rHost.replace("$#$#", domain);
 		if(Boolean.valueOf(sshRequired)) {
@@ -69,6 +69,6 @@ public class ExecuteQuerywithMultipleThreads2 {
 			}
 		}
 		timeStamp = LocalTime.now();
-		logger.trace("~~~~~~~~~~~~~~~ENDING on-"+environment+" @"+timeStamp+"~~~~~~~~~~~~~~~");
+		logger.trace("ENDING on-"+environment+" @"+timeStamp);
 	}
 }
