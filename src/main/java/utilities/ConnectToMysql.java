@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Reporter;
 
 public class ConnectToMysql {
 
@@ -40,6 +41,7 @@ public class ConnectToMysql {
 			logger.info("JDBC Connection to "+url+" established? "+ isConnected());
 		} 
 		catch (SQLException e) {
+			Reporter.log(e.getMessage());
 			logger.error(e);
 		}
 	}
@@ -53,6 +55,7 @@ public class ConnectToMysql {
 				}
 			} 
 			catch (SQLException e) {
+				Reporter.log(e.getMessage());
 				logger.error(e);
 				return false;
 			}
@@ -67,6 +70,7 @@ public class ConnectToMysql {
 				logger.info("JDBC Connection to "+url+" destroyed? {}", !isConnected());
 			} 
 			catch (SQLException e) {
+				Reporter.log(e.getMessage());
 				logger.error(e);
 				return;
 			}
@@ -85,6 +89,7 @@ public class ConnectToMysql {
 			logger.info("Executing scripts from "+fileName);
 		} 
 		catch (FileNotFoundException e1) {
+			Reporter.log("Invalid file name or location.");
 			logger.error("Invalid file name or location. ", e1);
 			return false;
 		}
@@ -106,13 +111,16 @@ public class ConnectToMysql {
 				currentStatement = connection.createStatement();
 				currentStatement.execute(rawStatement);
 				condition = true;
+				Reporter.log(currentStatement.getUpdateCount()+" row(s) updated");
 				logger.info(currentStatement.getUpdateCount()+" row(s) updated");
 			} 
 			catch (SQLException e) {
+				Reporter.log(e.getMessage());
 				logger.error(e);
 				return false;
 			} 
 			catch (NullPointerException e) {
+				Reporter.log(e.getMessage());
 				logger.error(e);
 				return false;
 			}
@@ -123,6 +131,7 @@ public class ConnectToMysql {
 						currentStatement.close();
 					} 
 					catch (SQLException e) {
+						Reporter.log(e.getMessage());
 						logger.error(e);
 					}
 				}
@@ -132,72 +141,6 @@ public class ConnectToMysql {
 		scanner.close();
 		return condition;
 	}
-
-	//	@SuppressWarnings("resource")
-	//	public void executeSqlScript(String value, String... columnNames) {
-	//		String filePath = fileName;
-	//		ResultSet rs = null;
-	//		File file = new File(filePath);
-	//		String delimiter = ";";
-	//		Scanner scanner = null;
-	//		try {
-	//			scanner = new Scanner(file).useDelimiter(delimiter);
-	//		} 
-	//		catch (FileNotFoundException e1) {
-	//			e1.printStackTrace();
-	//		}
-	//		Statement currentStatement = null;
-	//		while(scanner.hasNext()) {
-	//			String rawStatement = scanner.next();
-	//			rawStatement = rawStatement.replaceAll("\n", " ");
-	//			rawStatement = rawStatement.replaceAll("( )+", " ");
-	//			rawStatement = rawStatement.trim();
-	//			rawStatement = rawStatement + delimiter;
-	//			rawStatement = rawStatement.replaceAll("####", value);
-	//			try {
-	//				logger.info("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
-	//				logger.info(rawStatement);
-	//				logger.info("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
-	//				currentStatement = connection.createStatement();
-	//				rs = currentStatement.executeQuery(rawStatement);
-	//				int count = 0;
-	//				while(rs.next()) {
-	//					count++;
-	//					StringBuilder data = new StringBuilder();
-	//					for(String columnName : columnNames) {
-	//						data.append(rs.getString(columnName));
-	//						data.append(", ");
-	//					}
-	//					data.deleteCharAt(data.lastIndexOf(", "));
-	//					String row = data.toString().trim();
-	//					logger.info(row);
-	//				}
-	//				logger.info(count+" row(s) returned");
-	//
-	//			} 
-	//			catch (SQLException e) {
-	//				logger.error(e);
-	//				return;
-	//			} 
-	//			catch (ArrayIndexOutOfBoundsException e) {
-	//				logger.error(e);
-	//				return;
-	//			}
-	//			finally {
-	//				if (currentStatement != null) {
-	//					try {
-	//						currentStatement.close();
-	//					} 
-	//					catch (SQLException e) {
-	//						logger.error(e);
-	//						return;
-	//					}
-	//				}
-	//				currentStatement = null;
-	//			}
-	//		}
-	//		scanner.close();
-	//	}
 }
 
 
