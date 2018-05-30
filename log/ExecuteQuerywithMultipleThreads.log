@@ -73,3 +73,26 @@
 2018-05-30 10:45:07 [pool-2-thread-3] INFO  ConnectToServer:74 - ashnavsaxena@54.255.251.204:22 logged out
 2018-05-30 10:45:07 [pool-2-thread-3] TRACE WorkerThread:68 - ~~~~~~~~~~~~~~~ENDING on-webqe @10:45:07.698~~~~~~~~~~~~~~~
 2018-05-30 10:45:07 [main] INFO  ExecuteQuerywithMultipleThreads:104 - Ended 6 threads for each environment
+2018-05-30 10:59:18 [main] INFO  ExecuteQuerywithMultipleThreads:82 - Created 6 threads for each environment
+2018-05-30 10:59:18 [pool-2-thread-5] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-upgradedevqe @10:59:18.093~~~~~~~~~~~~~~~
+2018-05-30 10:59:18 [pool-2-thread-6] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-development @10:59:18.093~~~~~~~~~~~~~~~
+2018-05-30 10:59:18 [pool-2-thread-2] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-scmqe @10:59:18.093~~~~~~~~~~~~~~~
+2018-05-30 10:59:18 [pool-2-thread-3] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-webqe @10:59:18.093~~~~~~~~~~~~~~~
+2018-05-30 10:59:18 [pool-2-thread-1] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-preprod @10:59:18.093~~~~~~~~~~~~~~~
+2018-05-30 10:59:18 [pool-2-thread-4] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-posqe @10:59:18.093~~~~~~~~~~~~~~~
+2018-05-30 11:01:04 [main] INFO  ExecuteQuerywithMultipleThreads:82 - Created 6 threads for each environment
+2018-05-30 11:01:04 [pool-2-thread-1] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-preprod @11:01:04.652~~~~~~~~~~~~~~~
+2018-05-30 11:01:04 [pool-2-thread-5] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-upgradedevqe @11:01:04.652~~~~~~~~~~~~~~~
+2018-05-30 11:01:04 [pool-2-thread-4] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-posqe @11:01:04.652~~~~~~~~~~~~~~~
+2018-05-30 11:01:04 [pool-2-thread-3] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-webqe @11:01:04.652~~~~~~~~~~~~~~~
+2018-05-30 11:01:04 [pool-2-thread-6] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-development @11:01:04.652~~~~~~~~~~~~~~~
+2018-05-30 11:01:04 [pool-2-thread-2] TRACE WorkerThread:45 - ~~~~~~~~~~~~~~~STARTING on-scmqe @11:01:04.652~~~~~~~~~~~~~~~
+2018-05-30 11:48:21 [main] INFO  ExecuteQuerywithMultipleThreads:82 - Created 6 threads for each environment
+2018-05-30 11:48:21 [main] INFO  ExecuteQuerywithMultipleThreads:108 - Ended 6 threads for each environment
+2018-05-30 11:48:42 [main] INFO  ExecuteQuerywithMultipleThreads:82 - Created 6 threads for each environment
+2018-05-30 11:48:42 [main] INFO  ExecuteQuerywithMultipleThreads:108 - Ended 6 threads for each environment
+2018-05-30 12:05:49 [main] INFO  ExecuteQuerywithMultipleThreads:82 - Created 6 threads for each environment
+2018-05-30 12:06:50 [main] INFO  ExecuteQuerywithMultipleThreads:82 - Created 6 threads for each environment
+2018-05-30 12:06:50 [main] INFO  ExecuteQuerywithMultipleThreads:107 - Ended 6 threads for each environment
+2018-05-30 12:10:57 [main] INFO  ExecuteQuerywithMultipleThreads:82 - Created 6 threads for each environment
+2018-05-30 12:10:57 [main] INFO  ExecuteQuerywithMultipleThreads:107 - Ended 6 threads for each environment

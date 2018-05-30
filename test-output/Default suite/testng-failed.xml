@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.ashnav.pipeline.orderstate.ExecuteQuery">
+      <class name="com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads">
         <methods>
-          <include name="executeOnAllEvironments"/>
+          <include name="executeQuerywithMultipleThreads"/>
         </methods>
-      </class> <!-- com.ashnav.pipeline.orderstate.ExecuteQuery -->
+      </class> <!-- com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
