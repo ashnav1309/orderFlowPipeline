@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.Test;
 
 import macros.ConstantLiterals;
 import utilities.ConnectToGSheet;
@@ -72,8 +73,9 @@ class WorkerThread implements Runnable {
 public class ExecuteQuerywithMultipleThreads {
 
 	private static Logger logger = LogManager.getLogger(ExecuteQuerywithMultipleThreads.class.getName());
-
-	public static void main(String[] args) {
+	
+	@Test
+	public static void executeQuerywithMultipleThreads() {
 
 		List<List<Object>> values 	= ConnectToGSheet.getCellValues(ConstantLiterals.GSheetSpreadsheetId, ConstantLiterals.GSheetCellRange, ConstantLiterals.MajorDimension_Column);
 		int threadSize 				= values.size();
