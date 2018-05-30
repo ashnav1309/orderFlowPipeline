@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [RUN .sql ON ALL ENVIRONMENTS]">
+  <listeners>
+    <listener class-name="utilities.CustomizedEmailableReport"/>
+  </listeners>
+  <test name="RUN_SQL_ON_ENVIRONMENT(failed)">
+    <classes>
+      <class name="com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads">
+        <methods>
+          <include name="executeQuery" invocation-numbers="4 1 2 3 0"/>
+        </methods>
+      </class> <!-- com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads -->
+    </classes>
+  </test> <!-- RUN_SQL_ON_ENVIRONMENT(failed) -->
+</suite> <!-- Failed suite [RUN .sql ON ALL ENVIRONMENTS] -->

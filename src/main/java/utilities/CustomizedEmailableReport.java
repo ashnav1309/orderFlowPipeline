@@ -9,14 +9,12 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.testng.IInvokedMethod;
 import org.testng.IReporter;
 import org.testng.IResultMap;
 import org.testng.ISuite;
@@ -25,7 +23,6 @@ import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.collections.Lists;
 import org.testng.internal.Utils;
 import org.testng.xml.XmlSuite;
 
@@ -177,43 +174,43 @@ public class CustomizedEmailableReport implements IReporter {
      * Since the methods will be sorted chronologically, we want to return the
      * ITestNGMethod from the invoked methods.
      */
-    private Collection<ITestNGMethod> getMethodSet(IResultMap tests,
-                                                   ISuite suite) {
-        List<IInvokedMethod> r = Lists.newArrayList();
-        List<IInvokedMethod> invokedMethods = suite.getAllInvokedMethods();
-        for (IInvokedMethod im : invokedMethods) {
-            if (tests.getAllMethods().contains(im.getTestMethod())) {
-                r.add(im);
-            }
-        }
-        Collections.sort(r,new TestSorter());
-        List<ITestNGMethod> result = Lists.newArrayList();
-
-        for (IInvokedMethod m : r) {
-            for(ITestNGMethod temp:result){
-                if(!temp.equals(m.getTestMethod()))
-                    result.add(m.getTestMethod());
-            }
-        }
-
-        // Add all the methods that weren't invoked (e.g. skipped) that we
-        // haven't added yet
-
-        Collection<ITestNGMethod> allMethodsCollection=tests.getAllMethods();
-        List<ITestNGMethod> allMethods=new ArrayList<ITestNGMethod>(allMethodsCollection);
-        Collections.sort(allMethods, new TestMethodSorter());
-//        System.out.println("After sorting "+allMethods.toString());
-
-        //for (ITestNGMethod m : tests.getAllMethods()) {
-        for (ITestNGMethod m : allMethods) {
-            //System.out.println("tests.getAllMethods()  .."+m);
-            if (!result.contains(m)) {
-                result.add(m);
-            }
-        }
-        //System.out.println("results ....."+ result.toString());
-        return result;
-    }
+//    private Collection<ITestNGMethod> getMethodSet(IResultMap tests,
+//                                                   ISuite suite) {
+//        List<IInvokedMethod> r = Lists.newArrayList();
+//        List<IInvokedMethod> invokedMethods = suite.getAllInvokedMethods();
+//        for (IInvokedMethod im : invokedMethods) {
+//            if (tests.getAllMethods().contains(im.getTestMethod())) {
+//                r.add(im);
+//            }
+//        }
+//        Collections.sort(r,new TestSorter());
+//        List<ITestNGMethod> result = Lists.newArrayList();
+//
+//        for (IInvokedMethod m : r) {
+//            for(ITestNGMethod temp:result){
+//                if(!temp.equals(m.getTestMethod()))
+//                    result.add(m.getTestMethod());
+//            }
+//        }
+//
+//        // Add all the methods that weren't invoked (e.g. skipped) that we
+//        // haven't added yet
+//
+//        Collection<ITestNGMethod> allMethodsCollection=tests.getAllMethods();
+//        List<ITestNGMethod> allMethods=new ArrayList<ITestNGMethod>(allMethodsCollection);
+//        Collections.sort(allMethods, new TestMethodSorter());
+////        System.out.println("After sorting "+allMethods.toString());
+//
+//        //for (ITestNGMethod m : tests.getAllMethods()) {
+//        for (ITestNGMethod m : allMethods) {
+//            //System.out.println("tests.getAllMethods()  .."+m);
+//            if (!result.contains(m)) {
+//                result.add(m);
+//            }
+//        }
+//        //System.out.println("results ....."+ result.toString());
+//        return result;
+//    }
 
     @SuppressWarnings("unused")
     public void generateSuiteSummaryReport(List<ISuite> suites) {
@@ -297,13 +294,13 @@ public class CustomizedEmailableReport implements IReporter {
     }
 
 
-    private void summaryCell(String[] val) {
-        StringBuffer b = new StringBuffer();
-        for (String v : val) {
-            b.append(v + " ");
-        }
-        summaryCell(b.toString(), true);
-    }
+//    private void summaryCell(String[] val) {
+//        StringBuffer b = new StringBuffer();
+//        for (String v : val) {
+//            b.append(v + " ");
+//        }
+//        summaryCell(b.toString(), true);
+//    }
 
     private void summaryCell(String v, boolean isgood) {
         out.print("<td class=\"numi" + (isgood ? "" : "_attn") + "\">" + v
@@ -383,46 +380,46 @@ public class CustomizedEmailableReport implements IReporter {
 
     // ~ Inner Classes --------------------------------------------------------
     /** Arranges methods by classname and method name */
-    private class TestSorter implements Comparator<IInvokedMethod> {
-        // ~ Methods
-        // -------------------------------------------------------------
-
-        /** Arranges methods by classname and method name */
-        @Override
-        public int compare(IInvokedMethod o1, IInvokedMethod o2) {
-            //System.out.println("Comparing " + ((ITestNGMethod) o1).getMethodName() + " " + o1.getDate() + " and " + ((ITestNGMethod) o2).getMethodName() + " " + o2.getDate());
-            //return (int) (o1.getDate() - o2.getDate());
-            //System.out.println("First method class name "+o1.getTestMethod().getTestClass().getName());
-            //System.out.println("second method class name "+o2.getTestMethod().getTestClass().getName());
-            int r =o1.getTestMethod().getTestClass().getName().compareTo(o2.getTestMethod().getTestClass().getName());
-            //System.out.println("class name compare "+ r);
-            if (r == 0) {
-                //System.out.println("First method name "+o1.getTestMethod());
-                //System.out.println("second method name "+o2.getTestMethod());
-                r=o1.getTestMethod().compareTo(o2.getTestMethod());
-
-            }
-            return r;
-        }
-
-    }
-
-    private class TestMethodSorter implements Comparator<ITestNGMethod> {
-        @Override
-        public int compare(ITestNGMethod o1, ITestNGMethod o2) {
-            //return (int) (o1.getDate() - o2.getDate());
-            //System.out.println("First method class name "+o1.getTestClass().getName());
-            //System.out.println("second method class name "+o2.getTestClass().getName());
-            int r =o1.getTestClass().getName().compareTo(o2.getTestClass().getName());
-            //System.out.println("class name compare "+ r);
-            if (r == 0) {
-                //System.out.println("First method name "+o1.getMethodName());
-                //System.out.println("second method name "+o2.getMethodName());
-                r=o1.getMethodName().compareTo(o2.getMethodName());
-            }
-            return r;
-        }
-    }
+//    private class TestSorter implements Comparator<IInvokedMethod> {
+//        // ~ Methods
+//        // -------------------------------------------------------------
+//
+//        /** Arranges methods by classname and method name */
+//        @Override
+//        public int compare(IInvokedMethod o1, IInvokedMethod o2) {
+//            //System.out.println("Comparing " + ((ITestNGMethod) o1).getMethodName() + " " + o1.getDate() + " and " + ((ITestNGMethod) o2).getMethodName() + " " + o2.getDate());
+//            //return (int) (o1.getDate() - o2.getDate());
+//            //System.out.println("First method class name "+o1.getTestMethod().getTestClass().getName());
+//            //System.out.println("second method class name "+o2.getTestMethod().getTestClass().getName());
+//            int r =o1.getTestMethod().getTestClass().getName().compareTo(o2.getTestMethod().getTestClass().getName());
+//            //System.out.println("class name compare "+ r);
+//            if (r == 0) {
+//                //System.out.println("First method name "+o1.getTestMethod());
+//                //System.out.println("second method name "+o2.getTestMethod());
+//                r=o1.getTestMethod().compareTo(o2.getTestMethod());
+//
+//            }
+//            return r;
+//        }
+//
+//    }
+//
+//    private class TestMethodSorter implements Comparator<ITestNGMethod> {
+//        @Override
+//        public int compare(ITestNGMethod o1, ITestNGMethod o2) {
+//            //return (int) (o1.getDate() - o2.getDate());
+//            //System.out.println("First method class name "+o1.getTestClass().getName());
+//            //System.out.println("second method class name "+o2.getTestClass().getName());
+//            int r =o1.getTestClass().getName().compareTo(o2.getTestClass().getName());
+//            //System.out.println("class name compare "+ r);
+//            if (r == 0) {
+//                //System.out.println("First method name "+o1.getMethodName());
+//                //System.out.println("second method name "+o2.getMethodName());
+//                r=o1.getMethodName().compareTo(o2.getMethodName());
+//            }
+//            return r;
+//        }
+//    }
 
     private class TestResultsSorter implements Comparator<ITestResult> {
         @Override
