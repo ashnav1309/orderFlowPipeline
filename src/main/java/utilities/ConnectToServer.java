@@ -11,23 +11,21 @@ public class ConnectToServer {
 
 	private static Logger logger = LogManager.getLogger(ConnectToServer.class.getName());
 
-	private Session session = null;
-	private int LPort 		= 0;
-	private int RPort 		= 0;
-	private int SSHPort 	= 0;
-	private String RHost 	= null;
-	private String SSHUser, SSHHost, SSHPassword, environment, SSHRequired;
+	private Session session	= null;
+	private final int LPort;
+	private final int RPort;
+	private final int SSHPort;
+	private final String RHost;
+	private final String SSHUser, SSHHost, SSHPassword;
 
-	public ConnectToServer(String environment, String SSHUser, String SSHHost, String SSHPassword, int SSHPort, int LPort, String RHost, int RPort, String SSHRequired) {
-		this.environment = environment;
+	public ConnectToServer(String SSHUser, String SSHHost, String SSHPassword, String SSHPort, String LPort, String RHost, String RPort) {
 		this.SSHUser = SSHUser;
 		this.SSHHost = SSHHost;
 		this.SSHPassword = SSHPassword;
-		this.SSHPort = SSHPort;
+		this.SSHPort = Integer.parseInt(SSHPort);
 		this.RHost = RHost;
-		this.LPort = LPort;
-		this.RPort = RPort;
-		this.SSHRequired = SSHRequired;
+		this.LPort = Integer.parseInt(LPort);
+		this.RPort = Integer.parseInt(RPort);
 	}
 
 	public void createSSHSession() {
@@ -46,26 +44,6 @@ public class ConnectToServer {
 		}
 	}
 	
-	public Boolean getSSHRequired() {
-		return Boolean.valueOf(SSHRequired);
-	}
-
-	public int getLPort() {	
-		return LPort;	
-	}
-	public int getRPort() {	
-		return RPort;	
-	}
-	public String getRHost() {	
-		return RHost;	
-	}
-	public void startEnvironment() {
-		logger.trace("====================START-{}====================",environment.toUpperCase());
-	}
-	public void endEnvironment() {
-		logger.trace("====================END-{}====================",environment.toUpperCase());
-	}
-
 	public Boolean isSessionConnected() {
 		Boolean isSessionConnected = false;
 		if(session != null) {

@@ -11,8 +11,8 @@ public final class ConstantLiterals {
 	public static final String GSheetCellRange 		 = "ServersList!B:G";
 	public static final String GSheetSpreadsheetId 	 = "1ppbqQhNDplcH906K3oLFeLYd2d1jfQizfdr02DqpgeQ";
 	public static final String Localhost 			 = "127.0.0.1";
-	public static final  int   RPort 				 = 3306;
-	public static final  int   SSHPort 			 	 = 22;
+	public static final String RPort 				 = "3306";
+	public static final String SSHPort 			 	 = "22";
 	public static final int timeOut 				 = 0;
 	
 }
