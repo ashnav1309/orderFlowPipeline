@@ -44,7 +44,7 @@ public class ExecuteQuerywithMultipleThreads2 {
 			String lPort, String fileName, String sshRequired, String mySqlPassword, String sshPassword) {
 		LocalTime timeStamp = LocalTime.now();
 		logger.trace("~~~~~~~~~~~~~~~STARTING on-"+environment+" @"+timeStamp+"~~~~~~~~~~~~~~~");
-		String domain 				= System.getProperty("domain");
+		String domain 				= System.getProperty("Component");
 		rHost 						= rHost.replace("$#$#", domain);
 		if(Boolean.valueOf(sshRequired)) {
 			ConnectToServer connectToServer = new ConnectToServer(sshUser, sshHost, sshPassword, ConstantLiterals.SSHPort, lPort, rHost, ConstantLiterals.RPort);

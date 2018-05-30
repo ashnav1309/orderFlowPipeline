@@ -27,7 +27,7 @@
 				<version>2.19.1</version>
 				<configuration>
 					<systemPropertyVariables>
-						<domain>scm</domain>
+						<Component>scm</Component>
 					</systemPropertyVariables>
 					<suiteXmlFiles>
 						<suiteXmlFile>testng_runsql.xml</suiteXmlFile>
