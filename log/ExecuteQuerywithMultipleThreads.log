@@ -806,3 +806,73 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2018-05-31 01:24:13 [main] INFO  ConnectToServer:82 - 3316 local port forwarding destroyed
 2018-05-31 01:24:13 [main] INFO  ConnectToServer:74 - ashnavsaxena@13.228.213.25:22 logged out
 2018-05-31 01:24:13 [main] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-development @01:24:13.775
+2018-05-31 01:41:27 [main] TRACE ExecuteQuerywithMultipleThreads:87 - STARTING on-scmqe @01:41:27.196
+2018-05-31 01:41:28 [main] INFO  ConnectToServer:38 - ssh ashnavsaxena@54.255.251.151:22
+2018-05-31 01:41:28 [main] INFO  ConnectToServer:61 - Local port forwarding as 3312:mysql-scm-rw.scmqe.internal:3306
+2018-05-31 01:41:28 [main] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 01:41:29 [main] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3312 established? true
+2018-05-31 01:41:29 [main] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 01:41:29 [main] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 01:41:29 [main] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 01:41:29 [main] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 01:41:29 [main] TRACE ConnectToMysql:128 - ++++++++++END-QUERY++++++++++++
+2018-05-31 01:41:29 [main] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3312 destroyed? true
+2018-05-31 01:41:29 [main] INFO  ConnectToServer:82 - 3312 local port forwarding destroyed
+2018-05-31 01:41:29 [main] INFO  ConnectToServer:74 - ashnavsaxena@54.255.251.151:22 logged out
+2018-05-31 01:41:29 [main] TRACE ExecuteQuerywithMultipleThreads:111 - ENDING on-scmqe @01:41:29.342
+2018-05-31 01:41:29 [main] TRACE ExecuteQuerywithMultipleThreads:87 - STARTING on-webqe @01:41:29.345
+2018-05-31 01:41:30 [main] INFO  ConnectToServer:38 - ssh ashnavsaxena@54.255.251.204:22
+2018-05-31 01:41:30 [main] INFO  ConnectToServer:61 - Local port forwarding as 3313:mysql-scm-rw.webqe.internal:3306
+2018-05-31 01:41:30 [main] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 01:41:31 [main] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3313 established? true
+2018-05-31 01:41:31 [main] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 01:41:31 [main] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 01:41:31 [main] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 01:41:31 [main] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 01:41:31 [main] TRACE ConnectToMysql:128 - ++++++++++END-QUERY++++++++++++
+2018-05-31 01:41:31 [main] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3313 destroyed? true
+2018-05-31 01:41:31 [main] INFO  ConnectToServer:82 - 3313 local port forwarding destroyed
+2018-05-31 01:41:31 [main] INFO  ConnectToServer:74 - ashnavsaxena@54.255.251.204:22 logged out
+2018-05-31 01:41:31 [main] TRACE ExecuteQuerywithMultipleThreads:111 - ENDING on-webqe @01:41:31.253
+2018-05-31 01:41:31 [main] TRACE ExecuteQuerywithMultipleThreads:87 - STARTING on-posqe @01:41:31.256
+2018-05-31 01:41:32 [main] INFO  ConnectToServer:38 - ssh ashnavsaxena@13.228.2.47:22
+2018-05-31 01:41:32 [main] INFO  ConnectToServer:61 - Local port forwarding as 3314:mysql-scm-rw.posqe.internal:3306
+2018-05-31 01:41:32 [main] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 01:41:33 [main] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3314 established? true
+2018-05-31 01:41:33 [main] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 01:41:33 [main] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 01:41:33 [main] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 01:41:33 [main] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 01:41:33 [main] TRACE ConnectToMysql:128 - ++++++++++END-QUERY++++++++++++
+2018-05-31 01:41:33 [main] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3314 destroyed? true
+2018-05-31 01:41:33 [main] INFO  ConnectToServer:82 - 3314 local port forwarding destroyed
+2018-05-31 01:41:33 [main] INFO  ConnectToServer:74 - ashnavsaxena@13.228.2.47:22 logged out
+2018-05-31 01:41:33 [main] TRACE ExecuteQuerywithMultipleThreads:111 - ENDING on-posqe @01:41:33.127
+2018-05-31 01:41:33 [main] TRACE ExecuteQuerywithMultipleThreads:87 - STARTING on-upgradedevqe @01:41:33.129
+2018-05-31 01:41:34 [main] INFO  ConnectToServer:38 - ssh ashnavsaxena@52.74.17.133:22
+2018-05-31 01:41:34 [main] INFO  ConnectToServer:61 - Local port forwarding as 3315:mysql-scm-rw.upgradedevqe.internal:3306
+2018-05-31 01:41:34 [main] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 01:41:34 [main] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3315 established? true
+2018-05-31 01:41:34 [main] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 01:41:34 [main] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 01:41:34 [main] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 01:41:35 [main] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 01:41:35 [main] TRACE ConnectToMysql:128 - ++++++++++END-QUERY++++++++++++
+2018-05-31 01:41:35 [main] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3315 destroyed? true
+2018-05-31 01:41:35 [main] INFO  ConnectToServer:82 - 3315 local port forwarding destroyed
+2018-05-31 01:41:35 [main] INFO  ConnectToServer:74 - ashnavsaxena@52.74.17.133:22 logged out
+2018-05-31 01:41:35 [main] TRACE ExecuteQuerywithMultipleThreads:111 - ENDING on-upgradedevqe @01:41:35.086
+2018-05-31 01:41:35 [main] TRACE ExecuteQuerywithMultipleThreads:87 - STARTING on-development @01:41:35.089
+2018-05-31 01:41:39 [main] INFO  ConnectToServer:38 - ssh ashnavsaxena@13.228.213.25:22
+2018-05-31 01:41:39 [main] INFO  ConnectToServer:61 - Local port forwarding as 3316:mysql-scm-rw.development.internal:3306
+2018-05-31 01:41:39 [main] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 01:41:39 [main] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3316 established? true
+2018-05-31 01:41:39 [main] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 01:41:39 [main] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 01:41:39 [main] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 01:41:40 [main] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 01:41:40 [main] TRACE ConnectToMysql:128 - ++++++++++END-QUERY++++++++++++
+2018-05-31 01:41:40 [main] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3316 destroyed? true
+2018-05-31 01:41:40 [main] INFO  ConnectToServer:82 - 3316 local port forwarding destroyed
+2018-05-31 01:41:40 [main] INFO  ConnectToServer:74 - ashnavsaxena@13.228.213.25:22 logged out
+2018-05-31 01:41:40 [main] TRACE ExecuteQuerywithMultipleThreads:111 - ENDING on-development @01:41:40.040

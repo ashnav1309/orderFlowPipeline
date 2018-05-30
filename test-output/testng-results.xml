@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" ignored="0" total="6" passed="6">
   <reporter-output>
     <line>
       <![CDATA[-1 row(s) updated]]>
@@ -32,16 +32,20 @@
       <![CDATA[Query is executed successfully on development?: true]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="12673" started-at="2018-05-30T19:54:01Z" finished-at="2018-05-30T19:54:13Z">
+  <suite name="Default suite" duration-ms="14158" started-at="2018-05-30T20:11:25Z" finished-at="2018-05-30T20:11:40Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="12673" started-at="2018-05-30T19:54:01Z" finished-at="2018-05-30T19:54:13Z">
+    <test name="Default test" duration-ms="14158" started-at="2018-05-30T20:11:25Z" finished-at="2018-05-30T20:11:40Z">
       <class name="com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads">
-        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@3bb9a3ff]" name="executeQuery" duration-ms="3591" started-at="2018-05-31T01:24:02Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:24:06Z">
+        <test-method status="PASS" signature="dummy()[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@5af3afd9]" name="dummy" duration-ms="9" started-at="2018-05-31T01:41:25Z" finished-at="2018-05-31T01:41:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dummy -->
+        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@5af3afd9]" name="executeQuery" duration-ms="2159" started-at="2018-05-31T01:41:27Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:41:29Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{environment=scmqe, rHost=mysql-scm-rw.scmqe.internal, fileName=query.sql, sshHost=54.255.251.151, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@2cb2fc20, mySqlUser=environment, mySqlPassword=[B@4f4c4b1a, lPort=3312}]]>
+                <![CDATA[{environment=scmqe, rHost=mysql-scm-rw.scmqe.internal, fileName=query.sql, sshHost=54.255.251.151, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@589da3f3, mySqlUser=environment, mySqlPassword=[B@39d76cb5, lPort=3312}]]>
               </value>
             </param>
           </params>
@@ -54,11 +58,11 @@
             </line>
           </reporter-output>
         </test-method> <!-- executeQuery -->
-        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@3bb9a3ff]" name="executeQuery" duration-ms="1777" started-at="2018-05-31T01:24:06Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:24:08Z">
+        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@5af3afd9]" name="executeQuery" duration-ms="1910" started-at="2018-05-31T01:41:29Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:41:31Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{environment=webqe, rHost=mysql-scm-rw.webqe.internal, fileName=query.sql, sshHost=54.255.251.204, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@3a6f2de3, mySqlUser=environment, mySqlPassword=[B@49872d67, lPort=3313}]]>
+                <![CDATA[{environment=webqe, rHost=mysql-scm-rw.webqe.internal, fileName=query.sql, sshHost=54.255.251.204, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@8692d67, mySqlUser=environment, mySqlPassword=[B@78f5c518, lPort=3313}]]>
               </value>
             </param>
           </params>
@@ -71,11 +75,11 @@
             </line>
           </reporter-output>
         </test-method> <!-- executeQuery -->
-        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@3bb9a3ff]" name="executeQuery" duration-ms="2293" started-at="2018-05-31T01:24:08Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:24:10Z">
+        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@5af3afd9]" name="executeQuery" duration-ms="1872" started-at="2018-05-31T01:41:31Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:41:33Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{environment=posqe, rHost=mysql-scm-rw.posqe.internal, fileName=query.sql, sshHost=13.228.2.47, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@44040454, mySqlUser=environment, mySqlPassword=[B@65fe9e33, lPort=3314}]]>
+                <![CDATA[{environment=posqe, rHost=mysql-scm-rw.posqe.internal, fileName=query.sql, sshHost=13.228.2.47, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@26bab2f1, mySqlUser=environment, mySqlPassword=[B@3724af13, lPort=3314}]]>
               </value>
             </param>
           </params>
@@ -88,11 +92,11 @@
             </line>
           </reporter-output>
         </test-method> <!-- executeQuery -->
-        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@3bb9a3ff]" name="executeQuery" duration-ms="1661" started-at="2018-05-31T01:24:10Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:24:12Z">
+        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@5af3afd9]" name="executeQuery" duration-ms="1959" started-at="2018-05-31T01:41:33Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:41:35Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{environment=upgradedevqe, rHost=mysql-scm-rw.upgradedevqe.internal, fileName=query.sql, sshHost=52.74.17.133, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@6b53bcc2, mySqlUser=environment, mySqlPassword=[B@180da663, lPort=3315}]]>
+                <![CDATA[{environment=upgradedevqe, rHost=mysql-scm-rw.upgradedevqe.internal, fileName=query.sql, sshHost=52.74.17.133, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@424ebba3, mySqlUser=environment, mySqlPassword=[B@37052337, lPort=3315}]]>
               </value>
             </param>
           </params>
@@ -105,11 +109,11 @@
             </line>
           </reporter-output>
         </test-method> <!-- executeQuery -->
-        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@3bb9a3ff]" name="executeQuery" duration-ms="1713" started-at="2018-05-31T01:24:12Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:24:13Z">
+        <test-method status="PASS" signature="executeQuery(java.util.HashMap)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@5af3afd9]" name="executeQuery" duration-ms="4953" started-at="2018-05-31T01:41:35Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-31T01:41:40Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{environment=development, rHost=mysql-scm-rw.development.internal, fileName=query.sql, sshHost=13.228.213.25, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@53f0a4cb, mySqlUser=environment, mySqlPassword=[B@77a7cf58, lPort=3316}]]>
+                <![CDATA[{environment=development, rHost=mysql-scm-rw.development.internal, fileName=query.sql, sshHost=13.228.213.25, sshRequired=TRUE, sshUser=ashnavsaxena, sshPassword=[B@37efd131, mySqlUser=environment, mySqlPassword=[B@7e7b159b, lPort=3316}]]>
               </value>
             </param>
           </params>
