@@ -1,17 +1,379 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1472" started-at="2018-05-30T06:40:56Z" finished-at="2018-05-30T06:40:57Z">
+  <suite name="RUN .sql ON ALL ENVIRONMENTS" duration-ms="3184" started-at="2018-05-30T12:16:27Z" finished-at="2018-05-30T12:16:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1472" started-at="2018-05-30T06:40:56Z" finished-at="2018-05-30T06:40:57Z">
-      <class name="com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads">
-        <test-method status="PASS" signature="executeQuerywithMultipleThreads()[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads@158da8e]" name="executeQuerywithMultipleThreads" duration-ms="1460" started-at="2018-05-30T12:10:56Z" finished-at="2018-05-30T12:10:57Z">
+    <test name="RUN_SQL" duration-ms="3184" started-at="2018-05-30T12:16:27Z" finished-at="2018-05-30T12:16:30Z">
+      <class name="com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2">
+        <test-method status="PASS" signature="executeQuery(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2@5ffead27]" name="executeQuery" duration-ms="1862" started-at="2018-05-30T17:46:28Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-30T17:46:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[posqe]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[mysql-$#$#-rw.posqe.internal]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[environment]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[13.228.2.47]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[ashnavsaxena]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[3314]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[query.sql]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[EnviRonP%64IojktS#nt]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[ashnav1309]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- executeQuerywithMultipleThreads -->
-      </class> <!-- com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- executeQuery -->
+        <test-method status="PASS" signature="executeQuery(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2@5ffead27]" name="executeQuery" duration-ms="1862" started-at="2018-05-30T17:46:28Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-30T17:46:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[webqe]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[mysql-$#$#-rw.webqe.internal]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[environment]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[54.255.251.204]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[ashnavsaxena]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[3313]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[query.sql]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[EnviRonP%64IojktS#nt]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[ashnav1309]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- executeQuery -->
+        <test-method status="PASS" signature="executeQuery(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2@5ffead27]" name="executeQuery" duration-ms="1862" started-at="2018-05-30T17:46:28Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-30T17:46:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[development]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[mysql-$#$#-rw.development.internal]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[environment]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[13.228.213.25]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[ashnavsaxena]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[3316]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[query.sql]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[EnviRonP%64IojktS#nt]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[ashnav1309]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- executeQuery -->
+        <test-method status="PASS" signature="executeQuery(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2@5ffead27]" name="executeQuery" duration-ms="1862" started-at="2018-05-30T17:46:28Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-30T17:46:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[scmqe]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[mysql-$#$#-rw.scmqe.internal]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[environment]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[54.255.251.151]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[ashnavsaxena]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[3312]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[query.sql]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[EnviRonP%64IojktS#nt]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[ashnav1309]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- executeQuery -->
+        <test-method status="PASS" signature="executeQuery(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2@5ffead27]" name="executeQuery" duration-ms="1862" started-at="2018-05-30T17:46:28Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-30T17:46:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[upgradedevqe]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[mysql-$#$#-rw.upgradedevqe.internal]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[environment]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[52.74.17.133]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[ashnavsaxena]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[3315]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[query.sql]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[EnviRonP%64IojktS#nt]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[ashnav1309]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- executeQuery -->
+        <test-method status="PASS" signature="executeQuery(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2@5ffead27]" name="executeQuery" duration-ms="1862" started-at="2018-05-30T17:46:28Z" data-provider="fetchEnvironmentsData" finished-at="2018-05-30T17:46:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[preprod]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[mysql-$#$#-rw.preprod.internal]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[environment]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[bastion.lenskartserver.net]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[ashnavsaxena]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[3311]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[query.sql]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[TRUE]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[EnviRonP%64IojktS#nt]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[ashnav1309]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- executeQuery -->
+      </class> <!-- com.ashnav.pipeline.orderstate.ExecuteQuerywithMultipleThreads2 -->
+    </test> <!-- RUN_SQL -->
+  </suite> <!-- RUN .sql ON ALL ENVIRONMENTS -->
 </testng-results>

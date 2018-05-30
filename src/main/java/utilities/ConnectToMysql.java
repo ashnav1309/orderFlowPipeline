@@ -21,7 +21,7 @@ public class ConnectToMysql {
 	private final String MYSQLPassword;
 	private final String fileName;
 	private final String url;
-	
+
 	public ConnectToMysql(String MYSQLHost, String MYSQLUser, String MYSQLPassword, String LPort, String fileName) {
 		url 				  	= "jdbc:mysql://"+MYSQLHost+":"+LPort;
 		this.MYSQLUser 			= MYSQLUser;
@@ -74,7 +74,8 @@ public class ConnectToMysql {
 	}
 
 	@SuppressWarnings("resource") //resources are closed safely in finally block
-	public void executeSqlScript() {
+	public Boolean executeSqlScript() {
+		Boolean condition = false;
 		String filePath = fileName;
 		File file = new File(filePath);
 		String delimiter = ";";
@@ -85,7 +86,7 @@ public class ConnectToMysql {
 		} 
 		catch (FileNotFoundException e1) {
 			logger.error("Invalid file name or location. ", e1);
-			return;
+			return false;
 		}
 		Statement currentStatement = null;
 		while(scanner.hasNext()) {
@@ -103,14 +104,16 @@ public class ConnectToMysql {
 			try {
 				logger.trace(rawStatement);
 				currentStatement = connection.createStatement();
-				currentStatement.execute(rawStatement);
+				condition = currentStatement.execute(rawStatement);
 				logger.info(currentStatement.getUpdateCount()+" row(s) updated");
 			} 
 			catch (SQLException e) {
 				logger.error(e);
+				return false;
 			} 
 			catch (NullPointerException e) {
 				logger.error(e);
+				return false;
 			}
 			finally {
 				logger.trace("++++++++++END-QUERY++++++++++++");
@@ -126,73 +129,74 @@ public class ConnectToMysql {
 			}
 		}
 		scanner.close();
+		return condition;
 	}
 
-//	@SuppressWarnings("resource")
-//	public void executeSqlScript(String value, String... columnNames) {
-//		String filePath = fileName;
-//		ResultSet rs = null;
-//		File file = new File(filePath);
-//		String delimiter = ";";
-//		Scanner scanner = null;
-//		try {
-//			scanner = new Scanner(file).useDelimiter(delimiter);
-//		} 
-//		catch (FileNotFoundException e1) {
-//			e1.printStackTrace();
-//		}
-//		Statement currentStatement = null;
-//		while(scanner.hasNext()) {
-//			String rawStatement = scanner.next();
-//			rawStatement = rawStatement.replaceAll("\n", " ");
-//			rawStatement = rawStatement.replaceAll("( )+", " ");
-//			rawStatement = rawStatement.trim();
-//			rawStatement = rawStatement + delimiter;
-//			rawStatement = rawStatement.replaceAll("####", value);
-//			try {
-//				logger.info("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
-//				logger.info(rawStatement);
-//				logger.info("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
-//				currentStatement = connection.createStatement();
-//				rs = currentStatement.executeQuery(rawStatement);
-//				int count = 0;
-//				while(rs.next()) {
-//					count++;
-//					StringBuilder data = new StringBuilder();
-//					for(String columnName : columnNames) {
-//						data.append(rs.getString(columnName));
-//						data.append(", ");
-//					}
-//					data.deleteCharAt(data.lastIndexOf(", "));
-//					String row = data.toString().trim();
-//					logger.info(row);
-//				}
-//				logger.info(count+" row(s) returned");
-//
-//			} 
-//			catch (SQLException e) {
-//				logger.error(e);
-//				return;
-//			} 
-//			catch (ArrayIndexOutOfBoundsException e) {
-//				logger.error(e);
-//				return;
-//			}
-//			finally {
-//				if (currentStatement != null) {
-//					try {
-//						currentStatement.close();
-//					} 
-//					catch (SQLException e) {
-//						logger.error(e);
-//						return;
-//					}
-//				}
-//				currentStatement = null;
-//			}
-//		}
-//		scanner.close();
-//	}
+	//	@SuppressWarnings("resource")
+	//	public void executeSqlScript(String value, String... columnNames) {
+	//		String filePath = fileName;
+	//		ResultSet rs = null;
+	//		File file = new File(filePath);
+	//		String delimiter = ";";
+	//		Scanner scanner = null;
+	//		try {
+	//			scanner = new Scanner(file).useDelimiter(delimiter);
+	//		} 
+	//		catch (FileNotFoundException e1) {
+	//			e1.printStackTrace();
+	//		}
+	//		Statement currentStatement = null;
+	//		while(scanner.hasNext()) {
+	//			String rawStatement = scanner.next();
+	//			rawStatement = rawStatement.replaceAll("\n", " ");
+	//			rawStatement = rawStatement.replaceAll("( )+", " ");
+	//			rawStatement = rawStatement.trim();
+	//			rawStatement = rawStatement + delimiter;
+	//			rawStatement = rawStatement.replaceAll("####", value);
+	//			try {
+	//				logger.info("++++++++++++++++++++++++++++++QUERY-START++++++++++++++++++++++++++++++");
+	//				logger.info(rawStatement);
+	//				logger.info("+++++++++++++++++++++++++++++++QUERY-END+++++++++++++++++++++++++++++++");
+	//				currentStatement = connection.createStatement();
+	//				rs = currentStatement.executeQuery(rawStatement);
+	//				int count = 0;
+	//				while(rs.next()) {
+	//					count++;
+	//					StringBuilder data = new StringBuilder();
+	//					for(String columnName : columnNames) {
+	//						data.append(rs.getString(columnName));
+	//						data.append(", ");
+	//					}
+	//					data.deleteCharAt(data.lastIndexOf(", "));
+	//					String row = data.toString().trim();
+	//					logger.info(row);
+	//				}
+	//				logger.info(count+" row(s) returned");
+	//
+	//			} 
+	//			catch (SQLException e) {
+	//				logger.error(e);
+	//				return;
+	//			} 
+	//			catch (ArrayIndexOutOfBoundsException e) {
+	//				logger.error(e);
+	//				return;
+	//			}
+	//			finally {
+	//				if (currentStatement != null) {
+	//					try {
+	//						currentStatement.close();
+	//					} 
+	//					catch (SQLException e) {
+	//						logger.error(e);
+	//						return;
+	//					}
+	//				}
+	//				currentStatement = null;
+	//			}
+	//		}
+	//		scanner.close();
+	//	}
 }
 
 

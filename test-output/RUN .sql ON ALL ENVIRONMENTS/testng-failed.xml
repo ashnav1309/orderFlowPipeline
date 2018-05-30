@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [RUN .sql ON ALL ENVIRONMENTS]">
+  <test name="RUN_SQL(failed)">
+    <classes>
+      <class name="com.ashnav.pipeline.orderstate.test">
+        <methods>
+          <include name="hello"/>
+        </methods>
+      </class> <!-- com.ashnav.pipeline.orderstate.test -->
+    </classes>
+  </test> <!-- RUN_SQL(failed) -->
+</suite> <!-- Failed suite [RUN .sql ON ALL ENVIRONMENTS] -->
