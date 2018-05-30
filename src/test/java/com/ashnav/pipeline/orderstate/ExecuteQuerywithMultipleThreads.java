@@ -1,62 +1,78 @@
 package com.ashnav.pipeline.orderstate;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import macros.ConstantLiterals;
 import utilities.ConnectToGSheet;
+import utilities.ConnectToMysql;
+import utilities.ConnectToServer;
 
 public class ExecuteQuerywithMultipleThreads {
 
-	private static Logger logger = LogManager.getLogger(ExecuteQuerywithMultipleThreads.class.getName());
+	private static Logger logger 							= LogManager.getLogger(ExecuteQuerywithMultipleThreads.class.getName());
+	private static ArrayList<Object[]> environmentData 		= 	new ArrayList<>();
 
-	@Test
-	public static void executeQuerywithMultipleThreads() {
-
+	@DataProvider(name = "fetchEnvironmentsData", parallel = true)
+	public static Iterator<Object[]> supplyData_input() throws InterruptedException  {
 		List<List<Object>> values 	= ConnectToGSheet.getCellValues(ConstantLiterals.GSheetSpreadsheetId, ConstantLiterals.GSheetCellRange, ConstantLiterals.MajorDimension_Column);
-		int threadSize 				= 0;
 		for(List<Object> value : values) {
-			if(((String)value.get(1)).equalsIgnoreCase("true")) {
-				threadSize++;
+			if(value.size() > 1) { //Size is greater than 1 because top row will always be present
+				if(((String)value.get(1)).equalsIgnoreCase("true")) {
+					Object[] environmentDatum = (Object[])value.toArray();
+					environmentData.add(environmentDatum);
+				}
+			}
+			else {
+				logger.info("GSheet does not enough information to execute query");
 			}
 		}
-		if(threadSize > 0) {
-			logger.info("Created "+threadSize+" threads for each environment");
-			ExecutorService executor 	= Executors.newFixedThreadPool(threadSize);
-			String domain 				= System.getProperty("domain");
-			for(List<Object> value : values) {
-				if(value.size() > 1) { //Size is greater than 1 because top row will always be present
-					if(((String)value.get(1)).equalsIgnoreCase("true")) {
-						String environment      = value.get(0).toString();
-						String rHost 			= value.get(2).toString();
-						rHost 					= rHost.replace("$#$#", domain);
-						String mySqlUser 		= value.get(3).toString();
-						String sshHost 			= value.get(4).toString();
-						String sshUser 			= value.get(5).toString();
-						String lPort			= value.get(6).toString();
-						String fileName			= value.get(7).toString();
-						String sshRequired		= value.get(8).toString();
-						String mySqlPassword 	= value.get(9).toString();
-						String sshPassword 		= value.get(10).toString();
-						Runnable workerThread = new WorkerThread(environment, rHost, mySqlUser, mySqlPassword, sshHost, sshUser, sshPassword,fileName, sshRequired, lPort);
-						executor.execute(workerThread);
-					}
+		Iterator<Object[]> allDataIterator = environmentData.iterator();
+		return allDataIterator;
+	}
+
+	@Test(dataProvider="fetchEnvironmentsData", threadPoolSize = 6)
+	public void executeQuery(String environment, String create, String rHost, String mySqlUser, String sshHost, String sshUser,
+			String lPort, String fileName, String sshRequired, String mySqlPassword, String sshPassword) {
+		Boolean condition = false;
+		LocalTime timeStamp = LocalTime.now();
+		logger.trace("STARTING on-"+environment+" @"+timeStamp);
+		String domain 				= System.getProperty("Component");
+		rHost 						= rHost.replace("$#$#", domain);
+		if(Boolean.valueOf(sshRequired)) {
+			ConnectToServer connectToServer = new ConnectToServer(sshUser, sshHost, sshPassword, ConstantLiterals.SSHPort, lPort, rHost, ConstantLiterals.RPort);
+			ConnectToMysql connectToMysql = new ConnectToMysql(ConstantLiterals.Localhost, mySqlUser, mySqlPassword, lPort, fileName);
+			connectToServer.createSSHSession();
+			if(connectToServer.isSessionConnected()) {
+				connectToMysql.createMYSQLConnection();
+				if(connectToMysql.isConnected()){
+					condition = connectToMysql.executeSqlScript();
+					connectToMysql.destroyMySqlConnection();
 				}
-				else {
-					logger.info("GSheet has not enough information for executing query");
-				}
+				connectToServer.destroyLPort();
+				connectToServer.destroySSHSession();
 			}
-			executor.shutdown();
-			while(!executor.isTerminated()){}
-			logger.info("Ended "+threadSize+" threads for each environment");
 		}
 		else {
-			logger.info("Threads count is "+threadSize+"!!!");
+			ConnectToMysql connectToMysql = new ConnectToMysql(rHost, mySqlUser, mySqlPassword, ConstantLiterals.RPort, fileName);
+			connectToMysql.createMYSQLConnection();
+			if(connectToMysql.isConnected()){
+				condition = connectToMysql.executeSqlScript();
+				connectToMysql.destroyMySqlConnection();
+			}
 		}
+		timeStamp = LocalTime.now();
+		logger.trace("ENDING on-"+environment+" @"+timeStamp);
+		Reporter.log("Query is executed successfully on "+environment+"?: "+condition);
+		Assert.assertTrue(condition, "Query is NOT executed successfully on "+environment);
 	}
 }

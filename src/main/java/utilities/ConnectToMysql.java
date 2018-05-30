@@ -104,7 +104,8 @@ public class ConnectToMysql {
 			try {
 				logger.trace(rawStatement);
 				currentStatement = connection.createStatement();
-				condition = currentStatement.execute(rawStatement);
+				currentStatement.execute(rawStatement);
+				condition = true;
 				logger.info(currentStatement.getUpdateCount()+" row(s) updated");
 			} 
 			catch (SQLException e) {
