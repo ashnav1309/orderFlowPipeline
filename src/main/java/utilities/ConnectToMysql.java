@@ -117,12 +117,10 @@ public class ConnectToMysql {
 			catch (SQLException e) {
 				Reporter.log(e.getMessage());
 				logger.error(e);
-				return false;
 			} 
 			catch (NullPointerException e) {
 				Reporter.log(e.getMessage());
 				logger.error(e);
-				return false;
 			}
 			finally {
 				logger.trace("++++++++++END-QUERY++++++++++++");
