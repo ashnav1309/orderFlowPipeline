@@ -1,4 +1,4 @@
-package sqlProjedt;
+package sqlProject;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;

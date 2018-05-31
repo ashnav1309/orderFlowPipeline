@@ -1086,3 +1086,73 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 2018-05-31 12:06:46 [PoolService-4] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-development @12:06:46.704
 2018-05-31 12:06:46 [PoolService-0] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-scmqe @12:06:46.704
 2018-05-31 12:06:46 [PoolService-1] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-webqe @12:06:46.704
+2018-05-31 16:04:44 [PoolService-2] TRACE ExecuteQuerywithMultipleThreads:82 - STARTING on-posqe @16:04:44.076
+2018-05-31 16:04:44 [PoolService-1] TRACE ExecuteQuerywithMultipleThreads:82 - STARTING on-webqe @16:04:44.076
+2018-05-31 16:04:44 [PoolService-4] TRACE ExecuteQuerywithMultipleThreads:82 - STARTING on-development @16:04:44.076
+2018-05-31 16:04:44 [PoolService-3] TRACE ExecuteQuerywithMultipleThreads:82 - STARTING on-upgradedevqe @16:04:44.076
+2018-05-31 16:04:44 [PoolService-0] TRACE ExecuteQuerywithMultipleThreads:82 - STARTING on-scmqe @16:04:44.076
+2018-05-31 16:04:44 [PoolService-0] INFO  ConnectToServer:38 - ssh ashnavsaxena@54.255.251.151:22
+2018-05-31 16:04:44 [PoolService-0] INFO  ConnectToServer:61 - Local port forwarding as 3312:mysql-scm-rw.scmqe.internal:3306
+2018-05-31 16:04:44 [PoolService-0] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 16:04:45 [PoolService-1] INFO  ConnectToServer:38 - ssh ashnavsaxena@54.255.251.204:22
+2018-05-31 16:04:45 [PoolService-1] INFO  ConnectToServer:61 - Local port forwarding as 3313:mysql-scm-rw.webqe.internal:3306
+2018-05-31 16:04:45 [PoolService-1] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 16:04:45 [PoolService-2] INFO  ConnectToServer:38 - ssh ashnavsaxena@13.228.2.47:22
+2018-05-31 16:04:45 [PoolService-2] INFO  ConnectToServer:61 - Local port forwarding as 3314:mysql-scm-rw.posqe.internal:3306
+2018-05-31 16:04:45 [PoolService-2] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 16:04:45 [PoolService-3] INFO  ConnectToServer:38 - ssh ashnavsaxena@52.74.17.133:22
+2018-05-31 16:04:45 [PoolService-3] INFO  ConnectToServer:61 - Local port forwarding as 3315:mysql-scm-rw.upgradedevqe.internal:3306
+2018-05-31 16:04:45 [PoolService-3] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 16:04:45 [PoolService-4] INFO  ConnectToServer:38 - ssh ashnavsaxena@13.228.213.25:22
+2018-05-31 16:04:45 [PoolService-4] INFO  ConnectToServer:61 - Local port forwarding as 3316:mysql-scm-rw.development.internal:3306
+2018-05-31 16:04:45 [PoolService-4] INFO  ConnectToServer:51 - ssh established? true
+2018-05-31 16:04:45 [PoolService-1] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3313 established? true
+2018-05-31 16:04:45 [PoolService-2] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3314 established? true
+2018-05-31 16:04:45 [PoolService-0] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3312 established? true
+2018-05-31 16:04:45 [PoolService-2] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 16:04:45 [PoolService-1] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 16:04:45 [PoolService-0] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 16:04:45 [PoolService-0] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 16:04:45 [PoolService-1] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 16:04:45 [PoolService-2] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 16:04:45 [PoolService-0] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 16:04:45 [PoolService-2] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 16:04:45 [PoolService-1] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 16:04:45 [PoolService-3] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3315 established? true
+2018-05-31 16:04:45 [PoolService-3] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 16:04:45 [PoolService-3] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 16:04:45 [PoolService-3] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 16:04:45 [PoolService-4] INFO  ConnectToMysql:41 - JDBC Connection to jdbc:mysql://127.0.0.1:3316 established? true
+2018-05-31 16:04:45 [PoolService-4] INFO  ConnectToMysql:89 - Executing scripts from query.sql
+2018-05-31 16:04:45 [PoolService-4] TRACE ConnectToMysql:103 - ++++++++++START-QUERY++++++++++
+2018-05-31 16:04:45 [PoolService-4] TRACE ConnectToMysql:110 - select 1;
+2018-05-31 16:04:46 [PoolService-1] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 16:04:46 [PoolService-1] TRACE ConnectToMysql:126 - ++++++++++END-QUERY++++++++++++
+2018-05-31 16:04:46 [PoolService-0] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 16:04:46 [PoolService-0] TRACE ConnectToMysql:126 - ++++++++++END-QUERY++++++++++++
+2018-05-31 16:04:46 [PoolService-1] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3313 destroyed? true
+2018-05-31 16:04:46 [PoolService-0] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3312 destroyed? true
+2018-05-31 16:04:46 [PoolService-2] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 16:04:46 [PoolService-1] INFO  ConnectToServer:82 - 3313 local port forwarding destroyed
+2018-05-31 16:04:46 [PoolService-0] INFO  ConnectToServer:82 - 3312 local port forwarding destroyed
+2018-05-31 16:04:46 [PoolService-2] TRACE ConnectToMysql:126 - ++++++++++END-QUERY++++++++++++
+2018-05-31 16:04:46 [PoolService-2] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3314 destroyed? true
+2018-05-31 16:04:46 [PoolService-2] INFO  ConnectToServer:82 - 3314 local port forwarding destroyed
+2018-05-31 16:04:46 [PoolService-2] INFO  ConnectToServer:74 - ashnavsaxena@13.228.2.47:22 logged out
+2018-05-31 16:04:46 [PoolService-1] INFO  ConnectToServer:74 - ashnavsaxena@54.255.251.204:22 logged out
+2018-05-31 16:04:46 [PoolService-0] INFO  ConnectToServer:74 - ashnavsaxena@54.255.251.151:22 logged out
+2018-05-31 16:04:46 [PoolService-2] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-posqe @16:04:46.012
+2018-05-31 16:04:46 [PoolService-1] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-webqe @16:04:46.012
+2018-05-31 16:04:46 [PoolService-0] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-scmqe @16:04:46.012
+2018-05-31 16:04:46 [PoolService-3] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 16:04:46 [PoolService-3] TRACE ConnectToMysql:126 - ++++++++++END-QUERY++++++++++++
+2018-05-31 16:04:46 [PoolService-3] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3315 destroyed? true
+2018-05-31 16:04:46 [PoolService-3] INFO  ConnectToServer:82 - 3315 local port forwarding destroyed
+2018-05-31 16:04:46 [PoolService-3] INFO  ConnectToServer:74 - ashnavsaxena@52.74.17.133:22 logged out
+2018-05-31 16:04:46 [PoolService-3] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-upgradedevqe @16:04:46.023
+2018-05-31 16:04:46 [PoolService-4] INFO  ConnectToMysql:115 - -1 row(s) updated
+2018-05-31 16:04:46 [PoolService-4] TRACE ConnectToMysql:126 - ++++++++++END-QUERY++++++++++++
+2018-05-31 16:04:46 [PoolService-4] INFO  ConnectToMysql:70 - JDBC Connection to jdbc:mysql://127.0.0.1:3316 destroyed? true
+2018-05-31 16:04:46 [PoolService-4] INFO  ConnectToServer:82 - 3316 local port forwarding destroyed
+2018-05-31 16:04:46 [PoolService-4] INFO  ConnectToServer:74 - ashnavsaxena@13.228.213.25:22 logged out
+2018-05-31 16:04:46 [PoolService-4] TRACE ExecuteQuerywithMultipleThreads:106 - ENDING on-development @16:04:46.135
