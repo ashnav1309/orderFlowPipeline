@@ -23,7 +23,7 @@ public class ExecuteQuerywithMultipleThreads {
 
 	private static Logger logger 							= LogManager.getLogger(ExecuteQuerywithMultipleThreads.class.getName());
 
-	@DataProvider(name = "fetchEnvironmentsData")
+	@DataProvider(name = "fetchEnvironmentsData", parallel= true)
 	public Object[][] getTestData()
 	{	
 		List<List<Object>> values 								= ConnectToGSheet.getCellValues(ConstantLiterals.GSheetSpreadsheetId, ConstantLiterals.GSheetCellRange, ConstantLiterals.MajorDimension_Column);

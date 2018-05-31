@@ -1,9 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-
 <suite name="RUN .sql ON ALL ENVIRONMENTS">
-	<listeners>
-		<listener class-name='utilities.CustomizedEmailableReport' />
-	</listeners>
 	<test name="RUN_SQL_ON_ENVIRONMENT" preserve-order="true" verbose="0">
 		<classes>
 			<class
