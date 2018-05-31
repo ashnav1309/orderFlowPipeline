@@ -59,11 +59,6 @@ public class ExecuteQuerywithMultipleThreads {
 		return hashMapObj;
 	}
 	
-	@Test
-	public void dummyTest() {
-		
-	}
-
 	@Test(dataProvider="fetchEnvironmentsData", threadPoolSize = 6)
 	public void executeQuery(HashMap<String, Object> hashMapValue) {
 		String environment 					= (String)hashMapValue.get("environment");
